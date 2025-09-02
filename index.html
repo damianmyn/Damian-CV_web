@@ -1,126 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--Stop snooping Josh-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAMIAN MYNHARDT - CV</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Damian Mynhardt</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        main {
-            flex: 1;
-        }
-        .section-hidden {
+        /* Hide all sections by default */
+        .section {
             display: none;
         }
-        .section-visible {
+        /* Show the active section */
+        .section.active {
             display: block;
-        }
-        .masonry {
-            column-count: 3;
-            column-gap: 12px;
-        }
-        .masonry img {
-            width: 100%;
-            display: block;
-            margin-bottom: 12px;
-            break-inside: avoid;
-        }
-        @media (max-width: 1024px) {
-            .masonry {
-                column-count: 2;
-            }
-        }
-        @media (max-width: 640px) {
-            .masonry {
-                column-count: 1;
-            }
-        }
-        .section-animate {
-            transform: translateY(-30px);
-            opacity: 0;
-            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.4s;
-        }
-        .section-visible {
-            transform: translateY(0);
-            opacity: 1;
-            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.4s;
         }
     </style>
 </head>
-<body class="" style="background-image: url('vecteezy_modern-background-abstract-frame-colorful-light-purple_8148994.webp'); background-size: cover; background-position: center;">
-    <header class="fixed top-0 left-0 w-full z-50 text-black py-6" style="background-image: url('yellow-background-gradient-abstract-bright-background_601576-909.webp'); background-size: cover; background-position: center;">
-        <div class="container mx-auto px-4 flex items-center justify-between">
-            <div>
-                <h1 class="text-3xl font-bold">Damian Mynhardt</h1>
-                <p class="text-lg">I.T. Specialist & Graphic Designer</p>
-            </div>
-            <nav class="bg-transparent text-black">
-                
-                <button id="menu-toggle" class="lg:hidden block p-2 focus:outline-none" aria-label="Open menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
-                
-                <ul id="nav-menu" class="hidden flex-col absolute top-20 left-0 w-full bg-white shadow-lg rounded-lg divide-y divide-gray-200 lg:static lg:flex lg:flex-row lg:space-x-6 lg:bg-transparent lg:shadow-none lg:rounded-none lg:divide-y-0">
-                    <li><button onclick="showSection('about')" class="hover:underline w-full text-left px-4 py-2">About</button></li>
-                    <li><button onclick="showSection('education')" class="hover:underline w-full text-left px-4 py-2">Education</button></li>
-                    <li><button onclick="showSection('experience')" class="hover:underline w-full text-left px-4 py-2">Experience</button></li>
-                    <li><button onclick="showSection('skills')" class="hover:underline w-full text-left px-4 py-2">Skills</button></li>
-                    <li><button onclick="showSection('contact')" class="hover:underline w-full text-left px-4 py-2">Contact</button></li>
-                    <li><button onclick="showSection('portfolio')" class="hover:underline w-full text-left px-4 py-2">Portfolio</button></li>
-                </ul>
-            </nav>
+<body>
+    <header class="bg-dark text-white text-center py-5">
+        <div class="container">
+            <h1>Damian Mynhardt</h1>
+            <p>I.T. Specialist & Graphic Designer</p>
         </div>
     </header>
 
-    <main class="container mx-auto px-4 py-8 mt-12" style="padding-top: 7rem;">
-        <section id="about" class="section-visible bg-white p-6 rounded-lg shadow-md mb-6">
-            <h2 class="text-2xl font-semibold mb-4">About Me</h2>
-            <p class="text-gray-700">
-                I am a hard working individual that finds creative solutions to problems and enjoys a challenge. I am interested in programming, cyber security and graphic design, Linux systems administration and systems architecture as it combines both problem solving and creative thinking. I enjoy learning new skills and am always eager to learn. 
-            </p>
-        </section>
-
-        <section id="education" class="section-hidden bg-white p-6 rounded-lg shadow-md mb-6">
-            <h2 class="text-2xl font-semibold mb-4">Education</h2>
-            <div class="mb-4">
-                <h3 class="text-xl font-medium">High School Bacheolors</h3>
-                <p class="text-gray-600">Boksburg High School 2018-2022</p>
-            </div>
-            <div>
-                <h3 class="text-xl font-medium">CompTIA Security+</h3>
-                <p class="text-gray-600">Jason Dion Academy, 2024</p>
-                <p class="text-gray-700">Completed advanced coursework in cybersecuirty.</p>
-            </div>
-        </section>
-
-        <section id="experience" class="section-hidden bg-white p-6 rounded-lg shadow-md mb-6">
-            <h2 class="text-2xl font-semibold mb-4">Experience</h2>
-            <div class="mb-4">
-                <h3 class="text-xl font-medium">Store Assistant & Graphic Designer</h3>
-                <p class="text-gray-600">3@1, Brakpan, Carnival Mall 2023-2024</p>
-                <ul class="list-disc pl-5 text-gray-700">
-                    <li>Completing various printing tasks such as mug printing, shirt printing, canvas printing and blocking.</li>
-                    <li>Designing artwork for welcome boards, brochures, flyers, posters and various other reasons.</li>
-                    <li>Helping customers with various secretarial services such as writing their CV, invoices, e-mails and letters.</li>
-                    <li>Using Kodak products to print photographs and editing said photographs.</li>
-                    <li>Booking Skynet deliveries.</li>
-                    <li>Troubleshooting Xerox and HP printers.</li>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
                 </ul>
             </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <section id="about" class="section active">
+            <h2>About Me</h2>
+            <p>I am a hard working individual that finds creative solutions to problems and enjoys a challenge. I am interested in programming, cyber security and graphic design, Linux systems administration and systems architecture as it combines both problem solving and creative thinking. I enjoy learning new skills and am always eager to learn.</p>
         </section>
 
-        <section id="skills" class="section-hidden bg-white p-6 rounded-lg shadow-md mb-6">
-            <h2 class="text-2xl font-semibold mb-4">Skills</h2>
-            <ul class="grid grid-cols-2 gap-4 text-gray-700">
+        <section id="education" class="section">
+            <h2>Education</h2>
+            <h3>High School Bachelors</h3>
+            <p>Boksburg High School 2018-2022</p>
+            <h3>CompTIA Security+</h3>
+            <p>Jason Dion Academy, 2024</p>
+            <p>Completed advanced coursework in cybersecurity.</p>
+        </section>
+
+        <section id="experience" class="section">
+            <h2>Experience</h2>
+            <h3>Store Assistant & Graphic Designer</h3>
+            <p>3@1, Brakpan, Carnival Mall 2023-2024</p>
+            <ul>
+                <li>Completing various printing tasks such as mug printing, shirt printing, canvas printing and blocking.</li>
+                <li>Designing artwork for welcome boards, brochures, flyers, posters and various other reasons.</li>
+                <li>Helping customers with various secretarial services such as writing their CV, invoices, e-mails and letters.</li>
+                <li>Using Kodak products to print photographs and editing said photographs.</li>
+                <li>Booking Skynet deliveries.</li>
+                <li>Troubleshooting Xerox and HP printers.</li>
+            </ul>
+        </section>
+
+        <section id="skills" class="section">
+            <h2>Skills</h2>
+            <ul>
                 <li>Python</li>
                 <li>JavaScript</li>
                 <li>Rust</li>
@@ -129,7 +82,7 @@
                 <li>Linux Systems</li>
                 <li>Git</li>
                 <li>AWS</li>
-                <li>cybersecuirty</li>
+                <li>Cybersecurity</li>
                 <li>Windows Systems</li>
                 <li>BSD based systems</li>
                 <li>Adobe products</li>
@@ -137,91 +90,59 @@
             </ul>
         </section>
 
-        <section id="contact" class="section-hidden bg-white p-6 rounded-lg shadow-md mb-6">
-            <h2 class="text-2xl font-semibold mb-4">Contact</h2>
-            <p class="text-gray-700"><b>Email:</b> damian.mynhardt@gmail.com</p>
-            <p class="text-gray-700"><b>Phone:</b> +27 76 249 4252</p>
-            <p class="text-gray-700"><b>GitHub:</b> <a href="https://github.com/sprawler1414">github.com/sprawler1414</a> </p>
+        <section id="contact" class="section">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:damian.mynhardt@gmail.com">damian.mynhardt@gmail.com</a></p>
+            <p>Phone: +27 76 249 4252</p>
+            <p>GitHub: <a href="https://github.com/sprawler1414">github.com/sprawler1414</a></p>
         </section>
 
-        <section id="portfolio" class="section-hidden p-6 mb-6" style="min-height: 8vh;">
-            <h2 
-                class="text-2xl font-semibold mb-4 bg-white py-2 pl-6 pr-10 rounded-r-lg shadow"
-                style="margin-left: -1.5rem; width: 100vw; max-width: none;"
-            >
-                Art Portfolio
-        </section>
-            </h2>
-            <div class="masonry" id="portfolio-masonry">
-                <!-- Images rendered here by js -->
+        <section id="portfolio" class="section">
+            <h2>Art Portfolio</h2>
+            <div class="row">
+                <!-- Images will be dynamically added here -->
             </div>
         </section>
     </main>
 
-    <footer class="bg-blue-500 text-white py-4">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2025 Damian Mynhardt. All rights reserved.</p>
-        </div>
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2025 Damian Mynhardt. All rights reserved.</p>
     </footer>
 
-    
-
-    <script src="Art/artImages.js"></script>
+    <script src="./Art/artImages.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function renderPortfolioImages() {
-            const masonry = document.getElementById('portfolio-masonry');
-            masonry.innerHTML = "";
-            if (typeof artImages !== "undefined") {
-                artImages.forEach(filename => {
-                    const img = document.createElement('img');
-                    img.loading = "lazy";
-                    img.src = `Art/${filename}`;
-                    img.alt = `Artwork ${filename}`;
-                    img.className = "object-cover rounded shadow-md mb-2";
-                    masonry.appendChild(img);
+        // Navigation: Show only the active section
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default anchor behavior
+                const targetId = link.getAttribute('href').substring(1); // Get section ID (e.g., "about")
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active'); // Hide all sections
                 });
-            }
-        }
-
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                if (section.id === sectionId) {
-                    section.classList.remove('section-hidden');
-                    section.classList.add('section-animate');
-                    setTimeout(() => {
-                        section.classList.remove('section-animate');
-                        section.classList.add('section-visible');
-                    }, 10);
-                } else {
-                    section.classList.remove('section-visible');
-                    section.classList.remove('section-animate');
-                    section.classList.add('section-hidden');
-                }
+                document.querySelector(`#${targetId}`).classList.add('active'); // Show target section
+                // Smooth scroll to section
+                document.querySelector(`#${targetId}`).scrollIntoView({ behavior: 'smooth' });
             });
-
-            if (sectionId === "portfolio") {
-                renderPortfolioImages();
-            }
-
-            // Close hamburger menu on mobile after clicking a section
-            const navMenu = document.getElementById('nav-menu');
-            if (window.innerWidth < 1024 && !navMenu.classList.contains('hidden')) {
-                navMenu.classList.add('hidden');
-            }
-        }
-
-        // Hamburger menu toggle for mobile
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            const navMenu = document.getElementById('nav-menu');
-            navMenu.classList.toggle('hidden');
         });
 
-        // Initial render for About section (default)
+        // Load portfolio images
         document.addEventListener('DOMContentLoaded', () => {
-            if (document.getElementById('portfolio').classList.contains('section-visible')) {
-                renderPortfolioImages();
-            }
+            console.log('Script loaded');
+            console.log(artImages); // Debug: Check array contents
+            const portfolioSection = document.querySelector('#portfolio .row');
+            artImages.forEach(image => {
+                const imgElement = document.createElement('img');
+                imgElement.src = `/Damian-CV_web/Art/${image}`;
+                imgElement.alt = image.replace('.webp', '');
+                imgElement.width = 300;
+                imgElement.height = 300;
+                imgElement.className = 'img-fluid';
+                const colDiv = document.createElement('div');
+                colDiv.className = 'col-md-4 mb-4';
+                colDiv.appendChild(imgElement);
+                portfolioSection.appendChild(colDiv);
+            });
         });
     </script>
 </body>
