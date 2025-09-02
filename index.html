@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    \\ Stop snooping Josh
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -183,16 +184,21 @@
                     setTimeout(() => {
                         section.classList.remove('section-animate');
                         section.classList.add('section-visible');
-                    }, 10); // Start animation
+                    }, 10);
                 } else {
                     section.classList.remove('section-visible');
                     section.classList.remove('section-animate');
                     section.classList.add('section-hidden');
                 }
             });
+
+           
+            const navMenu = document.getElementById('nav-menu');
+            if (window.innerWidth < 1024 && !navMenu.classList.contains('hidden')) {
+                navMenu.classList.add('hidden');
+            }
         }
 
-        // Hamburger menu toggle for mobile
         document.getElementById('menu-toggle').addEventListener('click', function() {
             const navMenu = document.getElementById('nav-menu');
             navMenu.classList.toggle('hidden');
