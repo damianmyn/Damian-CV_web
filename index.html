@@ -1,3 +1,6 @@
+---
+layout: default
+---
 <!DOCTYPE html>
 <html lang="en">
 <!--Stop snooping Josh-->
@@ -152,18 +155,12 @@
                 Art Portfolio
             </h2>
             <div class="masonry">
-                <img loading="lazy" src="Art/abberation.webp" alt="Artwork 1" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/armani.webp" alt="Artwork 2" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/damianM.webp" alt="Artwork 3" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/displace.webp" alt="Artwork 4" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/EVEREST.webp" alt="Artwork 5" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/inthedark.webp" alt="Artwork 6" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/kings.webp" alt="Artwork 7" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/momento.webp" alt="Artwork 8" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/starewaytoheaven.webp" alt="Artwork 9" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/STEPHAN HAWKING.webp" alt="Artwork 10" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/tears in the rain.webp" alt="Artwork 11" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/ubridled.webp" alt="Artwork 12" class="object-cover rounded shadow-md mb-2">
+                {% assign art_images = site.static_files | where: "path", "/Art" %}
+                {% for image in site.static_files %}
+                    {% if image.path contains '/Art/' %}
+                        <img loading="lazy" src="{{ image.path }}" alt="Artwork" class="object-cover rounded shadow-md mb-2">
+                    {% endif %}
+                {% endfor %}
             </div>
         </section>
     </main>
