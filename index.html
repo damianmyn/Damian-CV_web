@@ -190,6 +190,12 @@
                     section.classList.add('section-hidden');
                 }
             });
+
+            // Close hamburger menu on mobile after clicking a section
+            const navMenu = document.getElementById('nav-menu');
+            if (window.innerWidth < 1024 && !navMenu.classList.contains('hidden')) {
+                navMenu.classList.add('hidden');
+            }
         }
 
         // Hamburger menu toggle for mobile
