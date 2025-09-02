@@ -21,6 +21,26 @@
         .section-visible {
             display: block;
         }
+        .masonry {
+            column-count: 3;
+            column-gap: 12px;
+        }
+        .masonry img {
+            width: 100%;
+            display: block;
+            margin-bottom: 12px;
+            break-inside: avoid;
+        }
+        @media (max-width: 1024px) {
+            .masonry {
+                column-count: 2;
+            }
+        }
+        @media (max-width: 640px) {
+            .masonry {
+                column-count: 1;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-100" style="background-image: url('vecteezy_modern-background-abstract-frame-colorful-light-purple_8148994.jpg'); background-size: cover; background-position: center;">
@@ -113,19 +133,19 @@
             >
                 Art Portfolio
             </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <img src="Art/abberation.png" alt="Artwork 1" class="object-cover rounded shadow-md">
-                <img src="Art/armani.png" alt="Artwork 2" class="object-cover rounded shadow-md">
-                <img src="Art/damianM.png" alt="Artwork 3" class="object-cover rounded shadow-md">
-                <img src="Art/displace.png" alt="Artwork 4" class="object-cover rounded shadow-md">
-                <img src="Art/EVEREST.png" alt="Artwork 5" class="object-cover rounded shadow-md">
-                <img src="Art/inthedark.png" alt="Artwork 6" class="object-cover rounded shadow-md">
-                <img src="Art/kings.png" alt="Artwork 7" class="object-cover rounded shadow-md">
-                <img src="Art/momento.png" alt="Artwork 8" class="object-cover rounded shadow-md">
-                <img src="Art/starewaytoheaven.png" alt="Artwork 9" class="object-cover rounded shadow-md">
-                <img src="Art/STEPHAN HAWKING.png" alt="Artwork 10" class="object-cover rounded shadow-md">
-                <img src="Art/tears in the rain.png" alt="Artwork 11" class="object-cover rounded shadow-md">
-                <img src="Art/ubridled.png" alt="Artwork 12" class="object-cover rounded shadow-md">
+            <div class="masonry">
+                <img src="Art/abberation.png" alt="Artwork 1" class="object-cover rounded shadow-md mb-2">
+                <img src="Art/armani.png" alt="Artwork 2" class="object-cover rounded shadow-md mb-2">
+                <img src="Art/damianM.png" alt="Artwork 3" class="object-cover rounded shadow-md mb-2">
+                <img src="Art/displace.png" alt="Artwork 4" class="object-cover rounded shadow-md mb-2">
+                <img src="Art/EVEREST.png" alt="Artwork 5" class="object-cover rounded shadow-md mb-2">
+                <img src="Art/inthedark.png" alt="Artwork 6" class="object-cover rounded shadow-md mb-2">
+                <img src="Art/kings.png" alt="Artwork 7" class="object-cover rounded shadow-md mb-2">
+                <img src="Art/momento.png" alt="Artwork 8" class="object-cover rounded shadow-md mb-2">
+                <img src="Art/starewaytoheaven.png" alt="Artwork 9" class="object-cover rounded shadow-md mb-2">
+                <img src="Art/STEPHAN HAWKING.png" alt="Artwork 10" class="object-cover rounded shadow-md mb-2">
+                <img src="Art/tears in the rain.png" alt="Artwork 11" class="object-cover rounded shadow-md mb-2">
+                <img src="Art/ubridled.png" alt="Artwork 12" class="object-cover rounded shadow-md mb-2">
             </div>
         </section>
     </main>
