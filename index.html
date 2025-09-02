@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--Stop snooping Josh-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -150,11 +149,9 @@
                 style="margin-left: -1.5rem; width: 100vw; max-width: none;"
             >
                 Art Portfolio
-        </section>
             </h2>
             <div class="masonry" id="portfolio-masonry">
-                <!-- Images rendered here by js -->
-            </div>
+                </div>
         </section>
     </main>
 
@@ -170,7 +167,11 @@
     <script>
         function renderPortfolioImages() {
             const masonry = document.getElementById('portfolio-masonry');
-            masonry.innerHTML = "";
+            // Check if images are already rendered
+            if (masonry.children.length > 0) {
+                return; // Do nothing if images are already there
+            }
+
             if (typeof artImages !== "undefined") {
                 artImages.forEach(filename => {
                     const img = document.createElement('img');
@@ -184,6 +185,12 @@
         }
 
         function showSection(sectionId) {
+            // First, clear any existing portfolio images to prevent them from remaining
+            const masonry = document.getElementById('portfolio-masonry');
+            if (masonry) {
+                masonry.innerHTML = "";
+            }
+
             const sections = document.querySelectorAll('section');
             sections.forEach(section => {
                 if (section.id === sectionId) {
