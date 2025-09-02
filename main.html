@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAMIAN MYNHARDT - CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            flex: 1;
+        }
+        .section-hidden {
+            display: none;
+        }
+        .section-visible {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-100" style="background-image: url('vecteezy_modern-background-abstract-frame-colorful-light-purple_8148994.jpg'); background-size: cover; background-position: center;">
+    <header class="bg-purple-600 text-black py-6" style="background-image: url('yellow-background-gradient-abstract-bright-background_601576-909.avif'); background-size: cover; background-position: center;">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl font-bold">Damian Mynhardt</h1>
+            <p class="text-lg">I.T. Specialist</p>
+        </div>
+    </header>
+
+    <nav class="bg-orange-800 text-white py-4" style="background-color: #088F8F;">
+        <div class="container mx-auto px-4">
+            <ul class="flex space-x-6">
+                <li><button onclick="showSection('about')" class="hover:underline">About</button></li>
+                <li><button onclick="showSection('education')" class="hover:underline">Education</button></li>
+                <li><button onclick="showSection('experience')" class="hover:underline">Experience</button></li>
+                <li><button onclick="showSection('skills')" class="hover:underline">Skills</button></li>
+                <li><button onclick="showSection('contact')" class="hover:underline">Contact</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <section id="about" class="section-visible bg-white p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-2xl font-semibold mb-4">About Me</h2>
+            <p class="text-gray-700">
+                I am a hard working individual that finds creative solutions to problems and enjoys a challenge. I am interested in programming, cyber security and graphic design, Linux systems administration and systems architecture as it combines both problem solving and creative thinking. I enjoy learning new skills and am always eager to learn. 
+            </p>
+        </section>
+
+        <section id="education" class="section-hidden bg-white p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-2xl font-semibold mb-4">Education</h2>
+            <div class="mb-4">
+                <h3 class="text-xl font-medium">High School Bacheolors</h3>
+                <p class="text-gray-600">Boksburg High School 2018-2022</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-medium">CompTIA Security+</h3>
+                <p class="text-gray-600">Jason Dion Acadamy, 2024</p>
+                <p class="text-gray-700">Completed advanced coursework in cybersecuirty.</p>
+            </div>
+        </section>
+
+        <section id="experience" class="section-hidden bg-white p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-2xl font-semibold mb-4">Experience</h2>
+            <div class="mb-4">
+                <h3 class="text-xl font-medium">Store Assistant & Graphic Designer</h3>
+                <p class="text-gray-600">3@1, Brakpan, Carnival Mall 2023-2024</p>
+                <ul class="list-disc pl-5 text-gray-700">
+                    <li>Completing various printing tasks such as mug printing, shirt printing, canvas printing and blocking.</li>
+                    <li>Designing artwork for welcome boards, brochures, flyers, posters and various other reasons.</li>
+                    <li>Helping customers with various secretarial services such as writing their CV, invoices, e-mails and letters.</li>
+                    <li>Using Kodak products to print photographs and editing said photographs.</li>
+                    <li>Booking Skynet deliveries.</li>
+                    <li>Troubleshooting Xerox and HP printers.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills" class="section-hidden bg-white p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-2xl font-semibold mb-4">Skills</h2>
+            <ul class="grid grid-cols-2 gap-4 text-gray-700">
+                <li>Python</li>
+                <li>JavaScript</li>
+                <li>Rust</li>
+                <li>Golang</li>
+                <li>SQL</li>
+                <li>Linux Systems</li>
+                <li>Git</li>
+                <li>AWS</li>
+                <li>cybersecuirty</li>
+                <li>Windows Systems</li>
+                <li>BSD based systems</li>
+                <li>Adobe products</li>
+                <li>Quick learner</li>
+            </ul>
+        </section>
+
+        <section id="contact" class="section-hidden bg-white p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-2xl font-semibold mb-4">Contact</h2>
+            <p class="text-gray-700">Email: damian.mynhardt@gmail.com</p>
+            <p class="text-gray-700">Phone: +27 76 249 4252</p>
+            <p class="text-gray-700">GitHub: <a href="https://github.com/sprawler1414">github.com/sprawler1414</a> </p>
+        </section>
+    </main>
+
+    <footer class="bg-red-300 text-white py-4">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 Damian Mynhardt. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                if (section.id === sectionId) {
+                    section.classList.remove('section-hidden');
+                    section.classList.add('section-visible');
+                } else {
+                    section.classList.remove('section-visible');
+                    section.classList.add('section-hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
