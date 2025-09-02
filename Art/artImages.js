@@ -1,4 +1,5 @@
 const artImages = [
+  "Gq6UK7GWwAEwtCK.webp",
   "abberation.webp",
   "armani.webp",
   "damianm.webp",
