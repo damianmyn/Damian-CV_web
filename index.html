@@ -41,6 +41,16 @@
                 column-count: 1;
             }
         }
+        .section-animate {
+            transform: translateY(-30px);
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.4s;
+        }
+        .section-visible {
+            transform: translateY(0);
+            opacity: 1;
+            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.4s;
+        }
     </style>
 </head>
 <body class="" style="background-image: url('vecteezy_modern-background-abstract-frame-colorful-light-purple_8148994.webp'); background-size: cover; background-position: center;">
@@ -169,9 +179,14 @@
             sections.forEach(section => {
                 if (section.id === sectionId) {
                     section.classList.remove('section-hidden');
-                    section.classList.add('section-visible');
+                    section.classList.add('section-animate');
+                    setTimeout(() => {
+                        section.classList.remove('section-animate');
+                        section.classList.add('section-visible');
+                    }, 10); // Start animation
                 } else {
                     section.classList.remove('section-visible');
+                    section.classList.remove('section-animate');
                     section.classList.add('section-hidden');
                 }
             });
