@@ -1,0 +1,29 @@
+name: Generate Art Image List
+
+on:
+  push:
+    branches: [main] # or your default branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate artImages.js
+        run: |
+          echo "const artImages = [" > Art/artImages.js
+          find Art -type f -name "*.webp" | sort | while read file; do
+            fname=$(basename "$file")
+            echo "  \"$fname\"," >> Art/artImages.js
+          done
+          echo "];" >> Art/artImages.js
+
+      - name: Commit and push artImages.js
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add Art/artImages.js
+          git diff --cached --quiet || git commit -m "Update artImages.js [auto]"
+          git push

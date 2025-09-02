@@ -151,19 +151,8 @@
             >
                 Art Portfolio
             </h2>
-            <div class="masonry">
-                <img loading="lazy" src="Art/abberation.webp" alt="Artwork 1" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/armani.webp" alt="Artwork 2" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/damianM.webp" alt="Artwork 3" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/displace.webp" alt="Artwork 4" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/EVEREST.webp" alt="Artwork 5" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/inthedark.webp" alt="Artwork 6" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/kings.webp" alt="Artwork 7" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/momento.webp" alt="Artwork 8" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/starewaytoheaven.webp" alt="Artwork 9" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/STEPHAN HAWKING.webp" alt="Artwork 10" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/tears in the rain.webp" alt="Artwork 11" class="object-cover rounded shadow-md mb-2">
-                <img loading="lazy" src="Art/ubridled.webp" alt="Artwork 12" class="object-cover rounded shadow-md mb-2">
+            <div class="masonry" id="portfolio-masonry">
+                <!-- Images rendered here by js -->
             </div>
         </section>
     </main>
@@ -174,7 +163,23 @@
         </div>
     </footer>
 
+    <script src="Art/artImages.js"></script>
     <script>
+        function renderPortfolioImages() {
+            const masonry = document.getElementById('portfolio-masonry');
+            masonry.innerHTML = "";
+            if (typeof artImages !== "undefined") {
+                artImages.forEach(filename => {
+                    const img = document.createElement('img');
+                    img.loading = "lazy";
+                    img.src = `Art/${filename}`;
+                    img.alt = `Artwork ${filename}`;
+                    img.className = "object-cover rounded shadow-md mb-2";
+                    masonry.appendChild(img);
+                });
+            }
+        }
+
         function showSection(sectionId) {
             const sections = document.querySelectorAll('section');
             sections.forEach(section => {
@@ -192,6 +197,11 @@
                 }
             });
 
+            // Dynamically render portfolio images when portfolio section is shown
+            if (sectionId === "portfolio") {
+                renderPortfolioImages();
+            }
+
             // Close hamburger menu on mobile after clicking a section
             const navMenu = document.getElementById('nav-menu');
             if (window.innerWidth < 1024 && !navMenu.classList.contains('hidden')) {
@@ -203,6 +213,13 @@
         document.getElementById('menu-toggle').addEventListener('click', function() {
             const navMenu = document.getElementById('nav-menu');
             navMenu.classList.toggle('hidden');
+        });
+
+        // Initial render for About section (default)
+        document.addEventListener('DOMContentLoaded', () => {
+            if (document.getElementById('portfolio').classList.contains('section-visible')) {
+                renderPortfolioImages();
+            }
         });
     </script>
 </body>
