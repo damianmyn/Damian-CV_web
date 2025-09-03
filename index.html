@@ -381,14 +381,19 @@
         </div>
     </footer>
 
-    <!--
-        Removed <script src="Art/artImages.js"></script> as this file was not provided
-        and was causing a console error.
-    -->
     <script>
         // Store the last scroll position to detect scroll direction
         let lastScrollY = window.scrollY;
 
+        // A list of image filenames for the portfolio
+        // The images should be in a folder named 'Art' in the same directory as this file.
+        const artImages = [
+            "1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png", 
+            "11.png", "12.png", "13.png", "14.png", "15.png", "16.png", "17.png", "18.png", "19.png", 
+            "20.png", "21.png", "22.png", "23.png", "24.png", "25.png", "26.png", "27.png", "28.png", 
+            "29.png", "30.png", "31.png", "32.png", "33.png", "34.png", "35.png", "36.png", "37.png"
+        ];
+        
         // Add a scroll event listener to the window
         window.addEventListener('scroll', () => {
             const currentScrollY = window.scrollY;
@@ -488,20 +493,6 @@
             scrollToSection('about');
         });
         
-        // Removed Education, Experience, and Skills links
-        // document.querySelector('a[href="#education"]').addEventListener('click', (e) => {
-        //     e.preventDefault();
-        //     scrollToSection('education');
-        // });
-        // document.querySelector('a[href="#experience"]').addEventListener('click', (e) => {
-        //     e.preventDefault();
-        //     scrollToSection('experience');
-        // });
-        // document.querySelector('a[href="#skills"]').addEventListener('click', (e) => {
-        //     e.preventDefault();
-        //     scrollToSection('skills');
-        // });
-
         // Hamburger menu toggle for mobile
         document.getElementById('menu-toggle').addEventListener('click', function() {
             const navMenu = document.getElementById('nav-menu');
