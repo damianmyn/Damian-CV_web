@@ -416,9 +416,6 @@
                 return; // Do nothing if images are already there
             }
 
-            // The artImages array is not defined, so this function is not runnable
-            // without the external file. I will comment out the code that uses it.
-            /*
             if (typeof artImages !== "undefined") {
                 artImages.forEach(filename => {
                     const img = document.createElement('img');
@@ -429,7 +426,7 @@
                     masonry.appendChild(img);
                 });
             }
-            */
+            
         }
 
         function showSection(sectionId) {
