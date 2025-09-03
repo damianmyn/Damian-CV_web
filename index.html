@@ -11,12 +11,16 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            /* Changed to a purple gradient */
             background: linear-gradient(to bottom right, #8A2BE2, #9370DB); /* Or any purple shades you prefer */
             position: relative;
-            overflow: hidden;
+            /* Removed overflow: hidden; */
         }
-        main, header, footer {
+        main {
+            flex: 1; /* Added to push the footer down */
+            position: relative;
+            z-index: 2;
+        }
+        header, footer {
             position: relative;
             z-index: 2; /* Ensures content is above the bubbles */
         }
