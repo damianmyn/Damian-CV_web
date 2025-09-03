@@ -24,6 +24,8 @@
             flex-direction: column;
             background: linear-gradient(to bottom right, #6a329e, #765aad);
             position: relative;
+            /* Added padding-top to the body to force content below the fixed header */
+            padding-top: 12rem;
         }
 
         /* Apply the custom font to the heading */
@@ -66,21 +68,27 @@
             position: relative;
             z-index: 2;
         }
-        header {
-            background: transparent;
-            position: relative;
-            z-index: 2;
-        }
+
         footer {
             position: relative;
             z-index: 2;
         }
+        
+        /* Section visibility classes */
         .section-hidden {
             display: none;
         }
         .section-visible {
             display: block;
         }
+        .section-animate {
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .masonry {
             column-count: 3;
             column-gap: 12px;
@@ -101,17 +109,7 @@
                 column-count: 1;
             }
         }
-        .section-animate {
-            transform: translateY(-30px);
-            opacity: 0;
-            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.4s;
-        }
-        .section-visible {
-            transform: translateY(0);
-            opacity: 1;
-            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.4s;
-        }
-
+        
         /* --- Bubble Animation Styles (from CodePen) --- */
         .bg-bubbles {
             position: fixed;
@@ -216,6 +214,31 @@
             }
         }
         /* --- End of Bubble Animation Styles --- */
+
+        /* === New Styles for Fixed Header and Disappearing Navbar === */
+        header {
+            /* Keep the header fixed at the top */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            background: transparent;
+            /* Added a smooth transition to make the change look nice */
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* The navbar itself will be hidden when scrolling down */
+        .scrolled nav {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        /* Added a transition for the nav to make the hide/show effect smooth */
+        nav {
+            transition: all 0.3s ease-in-out;
+        }
+
     </style>
 </head>
 <body>
@@ -232,89 +255,94 @@
         <li></li>
     </ul>
 
-    <header class="fixed top-0 left-0 w-full z-50 py-6" style="color: rgb(51, 35, 28);">
+    <header class="py-6" style="color: rgb(51, 35, 28);">
         <div class="container mx-auto px-4 flex items-center justify-between">
             <div class="name-strip-container">
                 <h1 class="text-5xl font-bold">Damian Mynhardt</h1>
                 <p class="text-lg">I.T. Specialist & Graphic Designer</p>
             </div>
-            <nav class="bg-transparent" style="color: #F5F5DC;">
-                
+            
+            <nav id="navbar" class="bg-transparent" style="color: #F5F5DC;">
                 <button id="menu-toggle" class="lg:hidden block p-2 focus:outline-none" aria-label="Open menu">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
                 
-                <ul id="nav-menu" class="hidden flex-col absolute top-20 left-0 w-full bg-creamy shadow-lg rounded-lg divide-y divide-gray-200 lg:static lg:flex lg:flex-row lg:space-x-6 lg:bg-transparent lg:shadow-none lg:rounded-none lg:divide-y-0">
-                    <li><button onclick="showSection('about')" class="hover:underline w-full text-left px-4 py-2">About</button></li>
-                    <li><button onclick="showSection('education')" class="hover:underline w-full text-left px-4 py-2">Education</button></li>
-                    <li><button onclick="showSection('experience')" class="hover:underline w-full text-left px-4 py-2">Experience</button></li>
-                    <li><button onclick="showSection('skills')" class="hover:underline w-full text-left px-4 py-2">Skills</button></li>
-                    <li><button onclick="showSection('portfolio')" class="hover:underline w-full text-left px-4 py-2">Portfolio</button></li>
-                    <li><button onclick="showSection('download')" class="hover:underline w-full text-left px-4 py-2">Download Resume</button></li>
+                <ul id="nav-menu" class="hidden flex-col absolute top-20 right-0 w-full bg-creamy shadow-lg rounded-lg divide-y divide-gray-200 lg:static lg:flex lg:flex-row lg:space-x-6 lg:bg-transparent lg:shadow-none lg:rounded-none lg:divide-y-0" style="color: #F5F5DC;">
+                    <li><a href="#about" class="hover:underline w-full text-left px-4 py-2 block">About</a></li>
+                   <!-- <li><a href="#education" class="hover:underline w-full text-left px-4 py-2 block">Education</a></li>-->
+                   <!-- <li><a href="#experience" class="hover:underline w-full text-left px-4 py-2 block">Experience</a></li>-->
+                   <!-- <li><a href="#skills" class="hover:underline w-full text-left px-4 py-2 block">Skills</a></li>-->
+                    <li><button onclick="showSection('portfolio')" class="hover:underline w-full text-left px-4 py-2 block">Portfolio</button></li>
+                    <li><button onclick="showSection('download')" class="hover:underline w-full text-left px-4 py-2 block">Download Resume</button></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container mx-auto px-4 py-8 mt-12" style="padding-top: 7rem;">
-        <section id="about" class="section-visible bg-creamy p-6 rounded-lg shadow-md mb-6">
-            <h2 class="text-2xl font-semibold mb-4">About Me</h2>
-            <p class="text-gray-700">
-                I am a hard working individual that finds creative solutions to problems and enjoys a challenge. I am interested in programming, cyber security and graphic design, Linux systems administration and systems architecture as it combines both problem solving and creative thinking. I enjoy learning new skills and am always eager to learn. 
-            </p>
-        </section>
+    <main class="container mx-auto px-4 py-8 main-container">
+        
+        <!-- Scrollable Sections -->
+        <div id="scroll-sections">
+            <section id="about" class="bg-creamy p-6 rounded-lg shadow-md mb-6">
+                <h2 class="text-2xl font-semibold mb-4">About Me</h2>
+                <p class="text-gray-700">
+                    I am a hard working individual that finds creative solutions to problems and enjoys a challenge. I am interested in programming, cyber security and graphic design, Linux systems administration and systems architecture as it combines both problem solving and creative thinking. I enjoy learning new skills and am always eager to learn. 
+                </p>
+            </section>
 
-        <section id="education" class="section-hidden bg-creamy p-6 rounded-lg shadow-md mb-6">
-            <h2 class="text-2xl font-semibold mb-4">Education</h2>
-            <div class="mb-4">
-                <h3 class="text-xl font-medium">High School Bacheolors</h3>
-                <p class="text-gray-600">Boksburg High School 2018-2022</p>
-            </div>
-            <div>
-                <h3 class="text-xl font-medium">CompTIA Security+</h3>
-                <p class="text-gray-600">Jason Dion Academy, 2024</p>
-                <p class="text-gray-700">Completed advanced coursework in cybersecuirty.</p>
-            </div>
-        </section>
+            <section id="education" class="bg-creamy p-6 rounded-lg shadow-md mb-6">
+                <h2 class="text-2xl font-semibold mb-4">Education</h2>
+                <div class="mb-4">
+                    <h3 class="text-xl font-medium">High School Bacheolors</h3>
+                    <p class="text-gray-600">Boksburg High School 2018-2022</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-medium">CompTIA Security+</h3>
+                    <p class="text-gray-600">Jason Dion Academy, 2024</p>
+                    <p class="text-gray-700">Completed advanced coursework in cybersecuirty.</p>
+                </div>
+            </section>
 
-        <section id="experience" class="section-hidden bg-creamy p-6 rounded-lg shadow-md mb-6">
-            <h2 class="text-2xl font-semibold mb-4">Experience</h2>
-            <div class="mb-4">
-                <h3 class="text-xl font-medium">Store Assistant & Graphic Designer</h3>
-                <p class="text-gray-600">3@1, Brakpan, Carnival Mall 2023-2024</p>
-                <ul class="list-disc pl-5 text-gray-700">
-                    <li>Completing various printing tasks such as mug printing, shirt printing, canvas printing and blocking.</li>
-                    <li>Designing artwork for welcome boards, brochures, flyers, posters and various other reasons.</li>
-                    <li>Helping customers with various secretarial services such as writing their CV, invoices, e-mails and letters.</li>
-                    <li>Using Kodak products to print photographs and editing said photographs.</li>
-                    <li>Booking Skynet deliveries.</li>
-                    <li>Troubleshooting Xerox and HP printers.</li>
+            <section id="experience" class="bg-creamy p-6 rounded-lg shadow-md mb-6">
+                <h2 class="text-2xl font-semibold mb-4">Experience</h2>
+                <div class="mb-4">
+                    <h3 class="text-xl font-medium">Store Assistant & Graphic Designer</h3>
+                    <p class="text-gray-600">3@1, Brakpan, Carnival Mall 2023-2024</p>
+                    <ul class="list-disc pl-5 text-gray-700">
+                        <li>Completing various printing tasks suchs as mug printing, shirt printing, canvas printing and blocking.</li>
+                        <li>Designing artwork for welcome boards, brochures, flyers, posters and various other reasons.</li>
+                        <li>Helping customers with various secretarial services such as writing their CV, invoices, e-mails and letters.</li>
+                        <li>Using Kodak products to print photographs and editing said photographs.</li>
+                        <li>Booking Skynet deliveries.</li>
+                        <li>Troubleshooting Xerox and HP printers.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="skills" class="bg-creamy p-6 rounded-lg shadow-md mb-6">
+                <h2 class="text-2xl font-semibold mb-4">Skills</h2>
+                <ul class="grid grid-cols-2 gap-4 text-gray-700">
+                    <li>Python</li>
+                    <li>JavaScript</li>
+                    <li>Rust</li>
+                    <li>Golang</li>
+                    <li>SQL</li>
+                    <li>Linux Systems</li>
+                    <li>Git</li>
+                    <li>AWS</li>
+                    <li>cybersecuirty</li>
+                    <li>Windows Systems</li>
+                    <li>BSD based systems</li>
+                    <li>Adobe products</li>
+                    <li>Quick learner</li>
                 </ul>
-            </div>
-        </section>
-
-        <section id="skills" class="section-hidden bg-creamy p-6 rounded-lg shadow-md mb-6">
-            <h2 class="text-2xl font-semibold mb-4">Skills</h2>
-            <ul class="grid grid-cols-2 gap-4 text-gray-700">
-                <li>Python</li>
-                <li>JavaScript</li>
-                <li>Rust</li>
-                <li>Golang</li>
-                <li>SQL</li>
-                <li>Linux Systems</li>
-                <li>Git</li>
-                <li>AWS</li>
-                <li>cybersecuirty</li>
-                <li>Windows Systems</li>
-                <li>BSD based systems</li>
-                <li>Adobe products</li>
-                <li>Quick learner</li>
-            </ul>
-        </section>
-
-        <section id="portfolio" class="section-hidden p-6 mb-6" style="min-height: 8vh;">
+            </section>
+        </div>
+        
+        <!-- Clickable Sections -->
+        <section id="portfolio" class="p-6 section-hidden" style="min-height: 8vh;">
             <h2 
                 class="text-2xl font-semibold mb-4 bg-creamy py-2 pl-6 pr-10 rounded-r-lg shadow"
                 style="margin-left: -1.5rem; width: 100vw; max-width: none;"
@@ -325,7 +353,7 @@
                 </div>
         </section>
 
-        <section id="download" class="section-hidden bg-creamy p-6 rounded-lg shadow-md mb-6">
+        <section id="download" class="bg-creamy p-6 rounded-lg shadow-md mb-6 section-hidden">
             <h2 class="text-2xl font-semibold mb-4">Resume Download</h2>
             <p>
                 You can download my resume by clicking the button below:
@@ -350,10 +378,31 @@
         </div>
     </footer>
 
-    
-
     <script src="Art/artImages.js"></script>
     <script>
+        // Store the last scroll position to detect scroll direction
+        let lastScrollY = window.scrollY;
+
+        // Add a scroll event listener to the window
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            const header = document.querySelector('header');
+            const nav = document.getElementById('navbar');
+
+            // Check if scrolling down and if the scroll position is past a certain point
+            // The scroll threshold is set to 20 pixels to ensure it only hides after a deliberate scroll
+            if (currentScrollY > lastScrollY && currentScrollY > 20) {
+                // Scrolling down, add the 'scrolled' class to hide the nav
+                header.classList.add('scrolled');
+            } else {
+                // Scrolling up, remove the 'scrolled' class to show the nav
+                header.classList.remove('scrolled');
+            }
+
+            // Update the last scroll position
+            lastScrollY = currentScrollY;
+        });
+
         function renderPortfolioImages() {
             const masonry = document.getElementById('portfolio-masonry');
             // Check if images are already rendered
@@ -374,31 +423,50 @@
         }
 
         function showSection(sectionId) {
-            // First, clear any existing portfolio images to prevent them from remaining
-            const masonry = document.getElementById('portfolio-masonry');
-            if (masonry) {
-                masonry.innerHTML = "";
-            }
+            const scrollSections = document.getElementById('scroll-sections');
+            const portfolioSection = document.getElementById('portfolio');
+            const downloadSection = document.getElementById('download');
 
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                if (section.id === sectionId) {
-                    section.classList.remove('section-hidden');
-                    section.classList.add('section-animate');
-                    setTimeout(() => {
-                        section.classList.remove('section-animate');
-                        section.classList.add('section-visible');
-                    }, 10);
-                } else {
-                    section.classList.remove('section-visible');
-                    section.classList.remove('section-animate');
-                    section.classList.add('section-hidden');
-                }
-            });
-
+            // Hide scrollable sections and show the clicked section
             if (sectionId === "portfolio") {
+                scrollSections.style.display = 'none';
+                downloadSection.classList.add('section-hidden');
+                portfolioSection.classList.remove('section-hidden');
+                portfolioSection.classList.add('section-animate');
                 renderPortfolioImages();
+            } else if (sectionId === "download") {
+                scrollSections.style.display = 'none';
+                portfolioSection.classList.add('section-hidden');
+                downloadSection.classList.remove('section-hidden');
+                downloadSection.classList.add('section-animate');
             }
+            
+            // Close hamburger menu on mobile after clicking a section
+            const navMenu = document.getElementById('nav-menu');
+            if (window.innerWidth < 1024 && !navMenu.classList.contains('hidden')) {
+                navMenu.classList.add('hidden');
+            }
+        }
+        
+        // This function will handle the scrolling behavior
+        function scrollToSection(id) {
+            const scrollSections = document.getElementById('scroll-sections');
+            const portfolioSection = document.getElementById('portfolio');
+            const downloadSection = document.getElementById('download');
+            
+            // Show the scrollable sections and hide the others
+            scrollSections.style.display = 'block';
+            portfolioSection.classList.add('section-hidden');
+            downloadSection.classList.add('section-hidden');
+
+            // Get the element to scroll to
+            const targetElement = document.getElementById(id);
+            if (!targetElement) return;
+
+            // Smoothly scroll to the new position. The new padding on the body will handle the offset.
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
 
             // Close hamburger menu on mobile after clicking a section
             const navMenu = document.getElementById('nav-menu');
@@ -407,17 +475,28 @@
             }
         }
 
+        // Add event listeners for the scrollable links
+        document.querySelector('a[href="#about"]').addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollToSection('about');
+        });
+        document.querySelector('a[href="#education"]').addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollToSection('education');
+        });
+        document.querySelector('a[href="#experience"]').addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollToSection('experience');
+        });
+        document.querySelector('a[href="#skills"]').addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollToSection('skills');
+        });
+
         // Hamburger menu toggle for mobile
         document.getElementById('menu-toggle').addEventListener('click', function() {
             const navMenu = document.getElementById('nav-menu');
             navMenu.classList.toggle('hidden');
-        });
-
-        // Initial render for About section (default)
-        document.addEventListener('DOMContentLoaded', () => {
-            if (document.getElementById('portfolio').classList.contains('section-visible')) {
-                renderPortfolioImages();
-            }
         });
     </script>
 </body>
