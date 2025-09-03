@@ -6,21 +6,64 @@
     <title>DAMIAN MYNHARDT - CV</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /*
+        * Place the Sddystopiandemo-GO7xa.otf file in a folder named 'fonts'
+        * in the same directory as this index.html file.
+        */
+        @font-face {
+            font-family: 'SDDystopianDemoRegular';
+            src: url('fonts/Sddystopiandemo-GO7xa.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            background: linear-gradient(to bottom right, #8A2BE2, #9370DB);
+            background: linear-gradient(to bottom right, #6a329e, #765aad);
             position: relative;
         }
+
+        /* Apply the custom font to the heading */
+        h1 {
+            font-family: 'SDDystopianDemoRegular', serif;
+        }
+
+        /* Styles for the name strip container */
+        .name-strip-container {
+            position: relative;
+            z-index: 10;
+            padding: 0.5rem 2rem 0.5rem 1rem;
+            width: fit-content;
+            min-width: 250px;
+            margin-left: -100vw;
+            padding-left: calc(100vw + 2rem);
+            overflow: hidden; /* Important for the slanted effect */
+            filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3)); /* Correct shadow for slanted shape */
+        }
+        
+        .name-strip-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #FFFFFF;
+            transform: skewX(-15deg);
+            transform-origin: top left;
+            z-index: -1;
+        }
+
         main {
             flex: 1;
             position: relative;
             z-index: 2;
         }
         header {
-            background: transparent; /* Makes the header transparent */
+            background: transparent;
             position: relative;
             z-index: 2;
         }
@@ -185,10 +228,10 @@
         <li></li>
     </ul>
 
-    <header class="fixed top-0 left-0 w-full z-50 text-white py-6">
+    <header class="fixed top-0 left-0 w-full z-50 py-6" style="color: rgb(51, 35, 28);">
         <div class="container mx-auto px-4 flex items-center justify-between">
-            <div>
-                <h1 class="text-3xl font-bold">Damian Mynhardt</h1>
+            <div class="name-strip-container">
+                <h1 class="text-5xl font-bold">Damian Mynhardt</h1>
                 <p class="text-lg">I.T. Specialist & Graphic Designer</p>
             </div>
             <nav class="bg-transparent text-white">
