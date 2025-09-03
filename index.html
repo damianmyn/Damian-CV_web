@@ -269,14 +269,8 @@
                     </svg>
                 </button>
                 
-                <!-- 
-                    The nav-menu now uses text-gray-800 for mobile
-                    and reverts to text-white for larger screens (lg:).
-                    This makes the menu items visible against the creamy background.
-                -->
                 <ul id="nav-menu" class="hidden flex-col absolute top-20 right-0 w-full bg-creamy shadow-lg rounded-lg divide-y divide-gray-200 lg:static lg:flex lg:flex-row lg:space-x-6 lg:bg-transparent lg:shadow-none lg:rounded-none lg:divide-y-0 text-gray-800 lg:text-white">
                     <li><a href="#about" class="hover:underline w-full text-left px-4 py-2 block">About</a></li>
-                    <li><button onclick="showSection('portfolio')" class="hover:underline w-full text-left px-4 py-2 block">Portfolio</button></li>
                     <li><button onclick="showSection('download')" class="hover:underline w-full text-left px-4 py-2 block">Download Resume</button></li>
                 </ul>
             </nav>
@@ -344,17 +338,6 @@
         </div>
         
         <!-- Clickable Sections -->
-        <section id="portfolio" class="p-6 section-hidden" style="min-height: 8vh;">
-            <h2 
-                class="text-2xl font-semibold mb-4 bg-creamy py-2 pl-6 pr-10 rounded-r-lg shadow"
-                style="margin-left: -1.5rem; width: 100vw; max-width: none;"
-            >
-                Art Portfolio
-            </h2>
-            <div class="masonry" id="portfolio-masonry">
-                </div>
-        </section>
-
         <section id="download" class="bg-creamy p-6 rounded-lg shadow-md mb-6 section-hidden">
             <h2 class="text-2xl font-semibold mb-4">Resume Download</h2>
             <p>
@@ -383,15 +366,6 @@
     <script>
         // Store the last scroll position to detect scroll direction
         let lastScrollY = window.scrollY;
-
-        // A list of image filenames for the portfolio
-        // The images should be in a folder named 'Art' in the same directory as this file.
-        const artImages = [
-            "1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png", 
-            "11.png", "12.png", "13.png", "14.png", "15.png", "16.png", "17.png", "18.png", "19.png", 
-            "20.png", "21.png", "22.png", "23.png", "24.png", "25.png", "26.png", "27.png", "28.png", 
-            "29.png", "30.png", "31.png", "32.png", "33.png", "34.png", "35.png", "36.png", "37.png"
-        ];
         
         // Add a scroll event listener to the window
         window.addEventListener('scroll', () => {
@@ -413,44 +387,12 @@
             lastScrollY = currentScrollY;
         });
 
-        function renderPortfolioImages() {
-            const masonry = document.getElementById('portfolio-masonry');
-            // Check if images are already rendered
-            if (masonry.children.length > 0) {
-                return; // Do nothing if images are already there
-            }
-
-            // The artImages array is not defined, so this function is not runnable
-            // without the external file. I will comment out the code that uses it.
-            /*
-            if (typeof artImages !== "undefined") {
-                artImages.forEach(filename => {
-                    const img = document.createElement('img');
-                    img.loading = "lazy";
-                    img.src = `Art/${filename}`;
-                    img.alt = `Artwork ${filename}`;
-                    img.className = "object-cover rounded shadow-md mb-2";
-                    masonry.appendChild(img);
-                });
-            }
-            */
-        }
-
         function showSection(sectionId) {
             const scrollSections = document.getElementById('scroll-sections');
-            const portfolioSection = document.getElementById('portfolio');
             const downloadSection = document.getElementById('download');
             
-            // Hide scrollable sections and show the clicked section
-            if (sectionId === "portfolio") {
+            if (sectionId === "download") {
                 scrollSections.style.display = 'none';
-                downloadSection.classList.add('section-hidden');
-                portfolioSection.classList.remove('section-hidden');
-                portfolioSection.classList.add('section-animate');
-                renderPortfolioImages();
-            } else if (sectionId === "download") {
-                scrollSections.style.display = 'none';
-                portfolioSection.classList.add('section-hidden');
                 downloadSection.classList.remove('section-hidden');
                 downloadSection.classList.add('section-animate');
             }
@@ -465,12 +407,10 @@
         // This function will handle the scrolling behavior
         function scrollToSection(id) {
             const scrollSections = document.getElementById('scroll-sections');
-            const portfolioSection = document.getElementById('portfolio');
             const downloadSection = document.getElementById('download');
             
             // Show the scrollable sections and hide the others
             scrollSections.style.display = 'block';
-            portfolioSection.classList.add('section-hidden');
             downloadSection.classList.add('section-hidden');
 
             // Get the element to scroll to
