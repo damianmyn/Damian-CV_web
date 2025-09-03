@@ -74,7 +74,6 @@
                     <li><button onclick="showSection('education')" class="hover:underline w-full text-left px-4 py-2">Education</button></li>
                     <li><button onclick="showSection('experience')" class="hover:underline w-full text-left px-4 py-2">Experience</button></li>
                     <li><button onclick="showSection('skills')" class="hover:underline w-full text-left px-4 py-2">Skills</button></li>
-                    <li><button onclick="showSection('contact')" class="hover:underline w-full text-left px-4 py-2">Contact</button></li>
                     <li><button onclick="showSection('portfolio')" class="hover:underline w-full text-left px-4 py-2">Portfolio</button></li>
                     <li><button onclick="showSection('download')" class="hover:underline w-full text-left px-4 py-2">Download Resume</button></li>
                 </ul>
@@ -138,13 +137,6 @@
             </ul>
         </section>
 
-        <section id="contact" class="section-hidden bg-white p-6 rounded-lg shadow-md mb-6">
-            <h2 class="text-2xl font-semibold mb-4">Contact</h2>
-            <p class="text-gray-700"><b>Email:</b> damian.mynhardt@gmail.com</p>
-            <p class="text-gray-700"><b>Phone:</b> +27 76 249 4252</p>
-            <p class="text-gray-700"><b>GitHub:</b> <a href="https://github.com/sprawler1414">github.com/sprawler1414</a> </p>
-        </section>
-
         <section id="portfolio" class="section-hidden p-6 mb-6" style="min-height: 8vh;">
             <h2 
                 class="text-2xl font-semibold mb-4 bg-white py-2 pl-6 pr-10 rounded-r-lg shadow"
@@ -169,8 +161,15 @@
     </main>
 
     <footer class="bg-blue-500 text-white py-4">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2025 Damian Mynhardt. All rights reserved.</p>
+        <div class="container mx-auto px-4 md:flex md:justify-between md:items-center">
+            <div class="text-center md:text-left mb-2 md:mb-0">
+                <p>&copy; 2025 Damian Mynhardt. All rights reserved.</p>
+            </div>
+            <div class="text-center md:text-right">
+                <p><b>Email:</b> damian.mynhardt@gmail.com
+                <b>Phone:</b> +27 76 249 4252
+                <b>GitHub:</b> <a href="https://github.com/sprawler1414" class="hover:underline">github.com/sprawler1414</a> </p>
+            </div>
         </div>
     </footer>
 
