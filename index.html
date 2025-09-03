@@ -43,6 +43,10 @@
             overflow: hidden; /* Important for the slanted effect */
             filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3)); /* Correct shadow for slanted shape */
         }
+
+        .bg-creamy {
+            background-color: #F5F5DC;
+        }
         
         .name-strip-container::after {
             content: '';
@@ -51,7 +55,7 @@
             left: 0;
             height: 100%;
             width: 100%;
-            background-color: #FFFFFF;
+            background-color: #F5F5DC;
             transform: skewX(-15deg);
             transform-origin: top left;
             z-index: -1;
@@ -234,7 +238,7 @@
                 <h1 class="text-5xl font-bold">Damian Mynhardt</h1>
                 <p class="text-lg">I.T. Specialist & Graphic Designer</p>
             </div>
-            <nav class="bg-transparent text-white">
+            <nav class="bg-transparent" style="color: #F5F5DC;">
                 
                 <button id="menu-toggle" class="lg:hidden block p-2 focus:outline-none" aria-label="Open menu">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -242,7 +246,7 @@
                     </svg>
                 </button>
                 
-                <ul id="nav-menu" class="hidden flex-col absolute top-20 left-0 w-full bg-white shadow-lg rounded-lg divide-y divide-gray-200 lg:static lg:flex lg:flex-row lg:space-x-6 lg:bg-transparent lg:shadow-none lg:rounded-none lg:divide-y-0">
+                <ul id="nav-menu" class="hidden flex-col absolute top-20 left-0 w-full bg-creamy shadow-lg rounded-lg divide-y divide-gray-200 lg:static lg:flex lg:flex-row lg:space-x-6 lg:bg-transparent lg:shadow-none lg:rounded-none lg:divide-y-0">
                     <li><button onclick="showSection('about')" class="hover:underline w-full text-left px-4 py-2">About</button></li>
                     <li><button onclick="showSection('education')" class="hover:underline w-full text-left px-4 py-2">Education</button></li>
                     <li><button onclick="showSection('experience')" class="hover:underline w-full text-left px-4 py-2">Experience</button></li>
@@ -255,14 +259,14 @@
     </header>
 
     <main class="container mx-auto px-4 py-8 mt-12" style="padding-top: 7rem;">
-        <section id="about" class="section-visible bg-white p-6 rounded-lg shadow-md mb-6">
+        <section id="about" class="section-visible bg-creamy p-6 rounded-lg shadow-md mb-6">
             <h2 class="text-2xl font-semibold mb-4">About Me</h2>
             <p class="text-gray-700">
                 I am a hard working individual that finds creative solutions to problems and enjoys a challenge. I am interested in programming, cyber security and graphic design, Linux systems administration and systems architecture as it combines both problem solving and creative thinking. I enjoy learning new skills and am always eager to learn. 
             </p>
         </section>
 
-        <section id="education" class="section-hidden bg-white p-6 rounded-lg shadow-md mb-6">
+        <section id="education" class="section-hidden bg-creamy p-6 rounded-lg shadow-md mb-6">
             <h2 class="text-2xl font-semibold mb-4">Education</h2>
             <div class="mb-4">
                 <h3 class="text-xl font-medium">High School Bacheolors</h3>
@@ -275,7 +279,7 @@
             </div>
         </section>
 
-        <section id="experience" class="section-hidden bg-white p-6 rounded-lg shadow-md mb-6">
+        <section id="experience" class="section-hidden bg-creamy p-6 rounded-lg shadow-md mb-6">
             <h2 class="text-2xl font-semibold mb-4">Experience</h2>
             <div class="mb-4">
                 <h3 class="text-xl font-medium">Store Assistant & Graphic Designer</h3>
@@ -291,7 +295,7 @@
             </div>
         </section>
 
-        <section id="skills" class="section-hidden bg-white p-6 rounded-lg shadow-md mb-6">
+        <section id="skills" class="section-hidden bg-creamy p-6 rounded-lg shadow-md mb-6">
             <h2 class="text-2xl font-semibold mb-4">Skills</h2>
             <ul class="grid grid-cols-2 gap-4 text-gray-700">
                 <li>Python</li>
@@ -312,7 +316,7 @@
 
         <section id="portfolio" class="section-hidden p-6 mb-6" style="min-height: 8vh;">
             <h2 
-                class="text-2xl font-semibold mb-4 bg-white py-2 pl-6 pr-10 rounded-r-lg shadow"
+                class="text-2xl font-semibold mb-4 bg-creamy py-2 pl-6 pr-10 rounded-r-lg shadow"
                 style="margin-left: -1.5rem; width: 100vw; max-width: none;"
             >
                 Art Portfolio
@@ -321,7 +325,7 @@
                 </div>
         </section>
 
-        <section id="download" class="section-hidden bg-white p-6 rounded-lg shadow-md mb-6">
+        <section id="download" class="section-hidden bg-creamy p-6 rounded-lg shadow-md mb-6">
             <h2 class="text-2xl font-semibold mb-4">Resume Download</h2>
             <p>
                 You can download my resume by clicking the button below:
