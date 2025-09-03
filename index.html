@@ -11,18 +11,22 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            background: linear-gradient(to bottom right, #8A2BE2, #9370DB); /* Or any purple shades you prefer */
+            background: linear-gradient(to bottom right, #8A2BE2, #9370DB);
             position: relative;
-            /* Removed overflow: hidden; */
         }
         main {
-            flex: 1; /* Added to push the footer down */
+            flex: 1;
             position: relative;
             z-index: 2;
         }
-        header, footer {
+        header {
+            background: transparent; /* Makes the header transparent */
             position: relative;
-            z-index: 2; /* Ensures content is above the bubbles */
+            z-index: 2;
+        }
+        footer {
+            position: relative;
+            z-index: 2;
         }
         .section-hidden {
             display: none;
@@ -181,13 +185,13 @@
         <li></li>
     </ul>
 
-    <header class="fixed top-0 left-0 w-full z-50 text-black py-6" style="background-image: url('yellow-background-gradient-abstract-bright-background_601576-909.webp'); background-size: cover; background-position: center;">
+    <header class="fixed top-0 left-0 w-full z-50 text-white py-6">
         <div class="container mx-auto px-4 flex items-center justify-between">
             <div>
                 <h1 class="text-3xl font-bold">Damian Mynhardt</h1>
                 <p class="text-lg">I.T. Specialist & Graphic Designer</p>
             </div>
-            <nav class="bg-transparent text-black">
+            <nav class="bg-transparent text-white">
                 
                 <button id="menu-toggle" class="lg:hidden block p-2 focus:outline-none" aria-label="Open menu">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
