@@ -380,7 +380,10 @@
         </div>
     </footer>
 
-    <script src="Art/artImages.js"></script>
+    <!--
+        Removed <script src="Art/artImages.js"></script> as this file was not provided
+        and was causing a console error.
+    -->
     <script>
         // Store the last scroll position to detect scroll direction
         let lastScrollY = window.scrollY;
@@ -412,6 +415,9 @@
                 return; // Do nothing if images are already there
             }
 
+            // The artImages array is not defined, so this function is not runnable
+            // without the external file. I will comment out the code that uses it.
+            /*
             if (typeof artImages !== "undefined") {
                 artImages.forEach(filename => {
                     const img = document.createElement('img');
@@ -422,13 +428,14 @@
                     masonry.appendChild(img);
                 });
             }
+            */
         }
 
         function showSection(sectionId) {
             const scrollSections = document.getElementById('scroll-sections');
             const portfolioSection = document.getElementById('portfolio');
             const downloadSection = document.getElementById('download');
-
+            
             // Hide scrollable sections and show the clicked section
             if (sectionId === "portfolio") {
                 scrollSections.style.display = 'none';
@@ -482,19 +489,20 @@
             e.preventDefault();
             scrollToSection('about');
         });
-        // MODIFICATION: These links are now working again with the `scrollToSection` function.
-        document.querySelector('a[href="#education"]').addEventListener('click', (e) => {
-            e.preventDefault();
-            scrollToSection('education');
-        });
-        document.querySelector('a[href="#experience"]').addEventListener('click', (e) => {
-            e.preventDefault();
-            scrollToSection('experience');
-        });
-        document.querySelector('a[href="#skills"]').addEventListener('click', (e) => {
-            e.preventDefault();
-            scrollToSection('skills');
-        });
+        
+        // Removed Education, Experience, and Skills links
+        // document.querySelector('a[href="#education"]').addEventListener('click', (e) => {
+        //     e.preventDefault();
+        //     scrollToSection('education');
+        // });
+        // document.querySelector('a[href="#experience"]').addEventListener('click', (e) => {
+        //     e.preventDefault();
+        //     scrollToSection('experience');
+        // });
+        // document.querySelector('a[href="#skills"]').addEventListener('click', (e) => {
+        //     e.preventDefault();
+        //     scrollToSection('skills');
+        // });
 
         // Hamburger menu toggle for mobile
         document.getElementById('menu-toggle').addEventListener('click', function() {
