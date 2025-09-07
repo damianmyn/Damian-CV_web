@@ -6,10 +6,7 @@
     <title>Damian Mynhardt - CV</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /*
-        * Place the Sddystopiandemo-GO7xa.otf file in a folder named 'fonts'
-        * in the same directory as this index.html file.
-        */
+
         @font-face {
             font-family: 'SDDystopianDemoRegular';
             src: url('fonts/Sddystopiandemo-GO7xa.otf') format('opentype');
@@ -24,16 +21,13 @@
             flex-direction: column;
             background: linear-gradient(to bottom right, #4b2d66, #503f74);
             position: relative;
-            /* Added padding-top to the body to force content below the fixed header */
             padding-top: 12rem;
         }
 
-        /* Apply the custom font to the heading */
         h1 {
             font-family: 'SDDystopianDemoRegular', serif;
         }
 
-        /* Styles for the name strip container */
         .name-strip-container {
             position: relative;
             z-index: 10;
@@ -42,8 +36,8 @@
             min-width: 250px;
             margin-left: -100vw;
             padding-left: calc(100vw + 2rem);
-            overflow: hidden; /* Important for the slanted effect */
-            filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3)); /* Correct shadow for slanted shape */
+            overflow: hidden; 
+            filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3));
         }
 
         .bg-creamy {
@@ -74,7 +68,6 @@
             z-index: 2;
         }
         
-        /* Section visibility classes */
         .section-hidden {
             display: none;
         }
@@ -116,7 +109,6 @@
             }
         }
 
-        /* Image modal styles */
         .modal {
             display: none;
             position: fixed;
@@ -257,28 +249,23 @@
                 opacity: 0;
             }
         }
-        /* --- End of Bubble Animation Styles --- */
 
-        /* === New Styles for Fixed Header and Disappearing Navbar === */
         header {
-            /* Keep the header fixed at the top */
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 50;
             background: transparent;
-            /* Added a smooth transition to make the change look nice */
+
             transition: all 0.3s ease-in-out;
         }
 
-        /* The navbar itself will be hidden when scrolling down */
         .scrolled nav {
             transform: translateY(-100%);
             opacity: 0;
         }
 
-        /* Added a transition for the nav to make the hide/show effect smooth */
         nav {
             transition: all 0.3s ease-in-out;
         }
@@ -438,36 +425,27 @@
     <!-- Load artImages dynamically -->
     <script src="Art/artImages.js"></script>
     <script>
-        // Store the last scroll position to detect scroll direction
         let lastScrollY = window.scrollY;
         
-        // Add a scroll event listener to the window
         window.addEventListener('scroll', () => {
             const currentScrollY = window.scrollY;
             const header = document.querySelector('header');
             const nav = document.getElementById('navbar');
 
-            // Check if scrolling down and if the scroll position is past a certain point
-            // The scroll threshold is set to 20 pixels to ensure it only hides after a deliberate scroll
             if (currentScrollY > lastScrollY && currentScrollY > 20) {
-                // Scrolling down, add the 'scrolled' class to hide the nav
                 header.classList.add('scrolled');
             } else {
-                // Scrolling up, remove the 'scrolled' class to show the nav
                 header.classList.remove('scrolled');
             }
 
-            // Update the last scroll position
             lastScrollY = currentScrollY;
         });
 
-        // Portfolio functionality
         function loadPortfolio() {
             const gallery = document.getElementById('portfolio-gallery');
             const loading = document.getElementById('portfolio-loading');
             const empty = document.getElementById('portfolio-empty');
             
-            // Check if artImages is available
             if (typeof artImages === 'undefined') {
                 console.error('artImages not loaded');
                 loading.style.display = 'none';
@@ -481,7 +459,6 @@
                 return;
             }
             
-            // Clear existing content
             gallery.innerHTML = '';
             
             artImages.forEach((imageName, index) => {
@@ -490,8 +467,6 @@
                 img.alt = `Artwork ${index + 1}`;
                 img.loading = 'lazy';
                 img.onclick = () => openModal(img.src, img.alt);
-                
-                // Error handling for missing images
                 img.onerror = function() {
                     console.warn(`Image not found: ${this.src}`);
                     this.style.display = 'none';
@@ -504,7 +479,6 @@
             gallery.style.display = 'block';
         }
         
-        // Modal functionality
         function openModal(src, alt) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
@@ -513,7 +487,6 @@
             modalImg.alt = alt;
         }
         
-        // Close modal when clicking the X or outside the image
         document.querySelector('.close').onclick = function() {
             document.getElementById('imageModal').classList.remove('show');
         };
@@ -524,7 +497,6 @@
             }
         };
         
-        // Close modal with Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 document.getElementById('imageModal').classList.remove('show');
@@ -535,8 +507,7 @@
             const scrollSections = document.getElementById('scroll-sections');
             const portfolioSection = document.getElementById('portfolio');
             const downloadSection = document.getElementById('download');
-            
-            // Hide all sections first
+
             scrollSections.style.display = 'none';
             portfolioSection.classList.add('section-hidden');
             downloadSection.classList.add('section-hidden');
@@ -544,53 +515,41 @@
             if (sectionId === "portfolio") {
                 portfolioSection.classList.remove('section-hidden');
                 portfolioSection.classList.add('section-animate');
-                loadPortfolio(); // Load portfolio when showing the section
+                loadPortfolio(); 
             } else if (sectionId === "download") {
                 downloadSection.classList.remove('section-hidden');
                 downloadSection.classList.add('section-animate');
             }
             
-            // Close hamburger menu on mobile after clicking a section
             const navMenu = document.getElementById('nav-menu');
             if (window.innerWidth < 1024 && !navMenu.classList.contains('hidden')) {
                 navMenu.classList.add('hidden');
             }
         }
         
-        // This function will handle the scrolling behavior
         function scrollToSection(id) {
             const scrollSections = document.getElementById('scroll-sections');
             const portfolioSection = document.getElementById('portfolio');
             const downloadSection = document.getElementById('download');
             
-            // Show the scrollable sections and hide the others
             scrollSections.style.display = 'block';
             portfolioSection.classList.add('section-hidden');
             downloadSection.classList.add('section-hidden');
 
-            // Get the element to scroll to
             const targetElement = document.getElementById(id);
             if (!targetElement) return;
-
-            // Smoothly scroll to the new position. The new padding on the body will handle the offset.
             targetElement.scrollIntoView({
                 behavior: 'smooth'
             });
-
-            // Close hamburger menu on mobile after clicking a section
             const navMenu = document.getElementById('nav-menu');
             if (window.innerWidth < 1024 && !navMenu.classList.contains('hidden')) {
                 navMenu.classList.add('hidden');
             }
         }
-
-        // Add event listeners for the scrollable links
         document.querySelector('a[href="#about"]').addEventListener('click', (e) => {
             e.preventDefault();
             scrollToSection('about');
         });
-        
-        // Hamburger menu toggle for mobile
         document.getElementById('menu-toggle').addEventListener('click', function() {
             const navMenu = document.getElementById('nav-menu');
             navMenu.classList.toggle('hidden');
