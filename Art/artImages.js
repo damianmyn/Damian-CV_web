@@ -1,11 +1,11 @@
 const artImages = [
   "At the end of everything.webp",
+  "EVEREST.webp",
   "STEPHAN HAWKING.webp",
   "abberation.webp",
   "armani.webp",
-  "damianm.webp",
+  "damianM.webp",
   "displace.webp",
-  "everest.webp",
   "final.webp",
   "inthedark.webp",
   "kings.webp",
