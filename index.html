@@ -561,6 +561,33 @@
             const navMenu = document.getElementById('nav-menu');
             navMenu.classList.toggle('hidden');
         });
+
+
+    function scrollToSection(id) {
+        const scrollSections = document.getElementById('scroll-sections');
+        const portfolioSection = document.getElementById('portfolio');
+        const downloadSection = document.getElementById('download');
+        
+        scrollSections.style.display = 'block';
+        portfolioSection.classList.add('section-hidden');
+        downloadSection.classList.add('section-hidden');
+        
+        const headerHeight = document.querySelector('header').offsetHeight;
+        const targetElement = document.getElementById(id);
+        if (!targetElement) return;
+        
+        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+        
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    
+        const navMenu = document.getElementById('nav-menu');
+        if (window.innerWidth < 1024 && !navMenu.classList.contains('hidden')) {
+            navMenu.classList.add('hidden');
+        }
+    }
     </script>
 </body>
 </html>
