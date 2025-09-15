@@ -1,32 +1,42 @@
-name: Generate Certificate File List
+name: Generate Certificate List
 
 on:
   push:
-    branches: [master] # or your default branch
-
-permissions:
-  contents: write
+    branches:
+      - main
+    paths:
+      - 'Certificate/**'
 
 jobs:
-  build:
+  generate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: Generate certificateFiles.js
+      - name: Generate certificate list
+        id: generate-list
         run: |
-          echo "const certificateFiles = [" > Certificate/certificateFiles.js
-          find Certificates -type f \( -name "*.pdf" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.webp" -o -name "*.svg" \) | sort | while read file; do
-            fname=$(basename "$file")
-            echo "  \"$fname\"," >> Certificate/certificateFiles.js
-          done
-          echo "];" >> Certificate/certificateFiles.js
+          # Find all PDF and image files in the Certificate directory and create a comma-separated list
+          file_list=$(find Certificate -type f \( -name "*.pdf" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.webp" -o -name "*.svg" \) -printf "%f\n" | tr '\n' ',' | sed 's/,$//')
+          
+          # Check if the list is empty
+          if [ -z "$file_list" ]; then
+            echo "::set-output name=has_certificates::false"
+            echo "No certificates found. Skipping list generation."
+            echo "certificate_files=[]" > certificates.json
+          else
+            echo "::set-output name=has_certificates::true"
+            echo "Found certificates: $file_list"
+            # Format the list as a JSON array
+            echo "certificate_files=[\"$(echo "$file_list" | sed 's/,/","/g')\"]" > certificates.json
+          fi
 
-      - name: Commit and push certificateFiles.js
+      - name: Commit and push changes
+        if: steps.generate-list.outputs.has_certificates == 'true'
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git add Certificate/certificateFiles.js
-          git diff --cached --quiet || git commit -m "Update certificateFiles.js [auto]"
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add certificates.json
+          git commit -m "chore: Update certificate list"
           git push
