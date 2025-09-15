@@ -20,26 +20,23 @@ jobs:
           # Find all files and create a comma-separated list
           file_list=$(find Certificate -type f \( -name "*.pdf" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.webp" -o -name "*.svg" \) -printf "%f\n" | tr '\n' ',' | sed 's/,$//')
           
-          # Check if the list is empty
+          # Format the list as a JSON array (empty if no files)
           if [ -z "$file_list" ]; then
-            echo "has_certificates=false" >> $GITHUB_OUTPUT
-            echo "No certificates found. Skipping list generation."
+            json_array="[]"
+            echo "No certificates found. Generating empty list."
           else
-            echo "has_certificates=true" >> $GITHUB_OUTPUT
-            echo "Found certificates: $file_list"
-            # Format the list as a JSON array
             json_array="[\"$(echo "$file_list" | sed 's/,/","/g')\"]"
-            # Use a delimited string to handle multi-line output correctly
-            echo "certificate_files<<EOF" >> $GITHUB_OUTPUT
-            echo "$json_array" >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
+            echo "Found certificates: $file_list"
           fi
+          
+          # Write to certificates.json
+          echo "$json_array" > certificates.json
+          cat certificates.json  # Log for debugging
 
       - name: Commit and push changes
-        if: steps.generate-list.outputs.has_certificates == 'true'
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add certificates.json
-          git commit -m "chore: Update certificate list"
-          git push
+          git commit -m "chore: Update certificate list" || echo "No changes to commit"
+          git push || echo "No changes to push"
