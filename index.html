@@ -194,7 +194,7 @@
     </footer>
 
     <script src="Art/artImages.js"></script>
-    <script src="Certificates/certificateFiles.js"></script>
+    <script src="Certificate/certificateFiles.js"></script>
     <script>
         let lastScrollY = window.scrollY;
         
@@ -308,7 +308,7 @@
                     </div>
                 `;
                 
-                certificateCard.onclick = () => openCertificateModal(`Certificates/${fileName}`, fileName, isImage);
+                certificateCard.onclick = () => openCertificateModal(`Certificate/${fileName}`, fileName, isImage);
                 
                 gallery.appendChild(certificateCard);
             });
