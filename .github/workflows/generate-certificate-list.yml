@@ -16,17 +16,17 @@ jobs:
 
       - name: Generate certificateFiles.js
         run: |
-          echo "const certificateFiles = [" > Certificates/certificateFiles.js
+          echo "const certificateFiles = [" > Certificate/certificateFiles.js
           find Certificates -type f \( -name "*.pdf" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.webp" -o -name "*.svg" \) | sort | while read file; do
             fname=$(basename "$file")
-            echo "  \"$fname\"," >> Certificates/certificateFiles.js
+            echo "  \"$fname\"," >> Certificate/certificateFiles.js
           done
-          echo "];" >> Certificates/certificateFiles.js
+          echo "];" >> Certificate/certificateFiles.js
 
       - name: Commit and push certificateFiles.js
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add Certificates/certificateFiles.js
+          git add Certificate/certificateFiles.js
           git diff --cached --quiet || git commit -m "Update certificateFiles.js [auto]"
           git push
