@@ -21,6 +21,10 @@
             font-family: 'customfontheader', serif;
         }
 
+        h2 {
+            font-family: 'customfontheader', serif;
+        }
+
         .name-strip-container {
             position: relative;
             z-index: 10;
