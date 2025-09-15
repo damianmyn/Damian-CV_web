@@ -1,0 +1,32 @@
+name: Generate Certificate File List
+
+on:
+  push:
+    branches: [master] # or your default branch
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate certificateFiles.js
+        run: |
+          echo "const certificateFiles = [" > Certificates/certificateFiles.js
+          find Certificates -type f \( -name "*.pdf" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.webp" -o -name "*.svg" \) | sort | while read file; do
+            fname=$(basename "$file")
+            echo "  \"$fname\"," >> Certificates/certificateFiles.js
+          done
+          echo "];" >> Certificates/certificateFiles.js
+
+      - name: Commit and push certificateFiles.js
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add Certificates/certificateFiles.js
+          git diff --cached --quiet || git commit -m "Update certificateFiles.js [auto]"
+          git push

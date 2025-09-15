@@ -37,6 +37,7 @@
                 <ul id="nav-menu" class="hidden flex-col fixed top-32 left-0 w-full shadow-lg rounded-lg divide-y divide-white-200 lg:static lg:flex lg:flex-row lg:space-x-6 lg:bg-transparent lg:shadow-none lg:rounded-none lg:divide-y-0 text-white lg:text-white z-30">
                     <li><a href="#about" class="hover:underline w-full text-left px-4 py-2 block">About</a></li>
                     <li><button onclick="showSection('portfolio')" class="hover:underline w-full text-left px-4 py-2 block">Portfolio</button></li>
+                    <li><button onclick="showSection('certificates')" class="hover:underline w-full text-left px-4 py-2 block">Certificates</button></li>
                     <li><button onclick="showSection('download')" class="hover:underline w-full text-left px-4 py-2 block">Download Resume</button></li>
                 </ul>
             </nav>
@@ -132,9 +133,30 @@
             
             <div id="portfolio-empty" class="text-center py-8 text-gray-600" style="display: none;">
                 <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z" />
                 </svg>
                 <p class="mt-2">No artwork found. Add some images to the Art folder to see them here!</p>
+            </div>
+        </section>
+
+        <section id="certificates" class="bg-creamy p-6 rounded-lg shadow-md mb-6 section-hidden">
+            <h2 class="text-2xl font-semibold mb-4" style="color: oklch(97.74 0.02 97.52);">My Certificates</h2>
+            <p class="mb-6" style="color: #bcb9b0;">Professional certifications and achievements. Click on any certificate to view or download it.</p>
+            
+            <div id="certificates-loading" class="text-center py-8">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+                <p class="mt-2" style="color: #bcb9b0;">Loading certificates...</p>
+            </div>
+            
+            <div id="certificates-gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" style="display: none;">
+                <!-- Certificates will be dynamically loaded here -->
+            </div>
+            
+            <div id="certificates-empty" class="text-center py-8 text-gray-600" style="display: none;">
+                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <p class="mt-2">No certificates found. Add your certificates to the Certificates folder to see them here!</p>
             </div>
         </section>
 
@@ -156,6 +178,15 @@
         <img class="modal-content" id="modalImage" alt="Artwork">
     </div>
 
+    <!-- Certificate Modal -->
+    <div id="certificateModal" class="modal">
+        <span class="close-cert">&times;</span>
+        <div class="modal-content-cert">
+            <iframe id="modalCertificate" style="width: 90vw; height: 90vh; border: none; border-radius: 8px;"></iframe>
+            <img id="modalCertificateImage" style="max-width: 90vw; max-height: 90vh; border-radius: 8px; display: none;" alt="Certificate">
+        </div>
+    </div>
+
     <footer class="bg-blue-500 text-white py-4">
         <div class="text-center mb-2 md:mb-0">
             <p>&copy; 2025 Damian Mynhardt. All rights reserved.</p>
@@ -163,6 +194,7 @@
     </footer>
 
     <script src="Art/artImages.js"></script>
+    <script src="Certificates/certificateFiles.js"></script>
     <script>
         let lastScrollY = window.scrollY;
         
@@ -217,6 +249,73 @@
             loading.style.display = 'none';
             gallery.style.display = 'block';
         }
+
+        function loadCertificates() {
+            const gallery = document.getElementById('certificates-gallery');
+            const loading = document.getElementById('certificates-loading');
+            const empty = document.getElementById('certificates-empty');
+            
+            if (typeof certificateFiles === 'undefined') {
+                console.error('certificateFiles not loaded');
+                loading.style.display = 'none';
+                empty.style.display = 'block';
+                return;
+            }
+            
+            if (certificateFiles.length === 0) {
+                loading.style.display = 'none';
+                empty.style.display = 'block';
+                return;
+            }
+            
+            gallery.innerHTML = '';
+            
+            certificateFiles.forEach((fileName, index) => {
+                const fileExtension = fileName.split('.').pop().toLowerCase();
+                const certificateCard = document.createElement('div');
+                certificateCard.className = 'bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer';
+                certificateCard.style.backgroundColor = '#1f1f1f';
+                
+                const isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(fileExtension);
+                const isPDF = fileExtension === 'pdf';
+                
+                let iconSvg = '';
+                if (isPDF) {
+                    iconSvg = `
+                        <svg class="w-16 h-16 mx-auto mb-3 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd" />
+                        </svg>
+                    `;
+                } else if (isImage) {
+                    iconSvg = `
+                        <svg class="w-16 h-16 mx-auto mb-3 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+                        </svg>
+                    `;
+                } else {
+                    iconSvg = `
+                        <svg class="w-16 h-16 mx-auto mb-3 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                        </svg>
+                    `;
+                }
+                
+                certificateCard.innerHTML = `
+                    <div class="text-center">
+                        ${iconSvg}
+                        <h3 class="text-sm font-medium mb-2" style="color: oklch(97.74 0.02 97.52);">${fileName.replace(/\.[^/.]+$/, "")}</h3>
+                        <p class="text-xs uppercase tracking-wide" style="color: #bcb9b0;">${fileExtension.toUpperCase()}</p>
+                    </div>
+                `;
+                
+                certificateCard.onclick = () => openCertificateModal(`Certificates/${fileName}`, fileName, isImage);
+                
+                gallery.appendChild(certificateCard);
+            });
+            
+            loading.style.display = 'none';
+            gallery.style.display = 'block';
+        }
         
         function openModal(src, alt) {
             const modal = document.getElementById('imageModal');
@@ -225,9 +324,35 @@
             modalImg.src = src;
             modalImg.alt = alt;
         }
+
+        function openCertificateModal(src, fileName, isImage) {
+            const modal = document.getElementById('certificateModal');
+            const iframe = document.getElementById('modalCertificate');
+            const img = document.getElementById('modalCertificateImage');
+            
+            modal.classList.add('show');
+            
+            if (isImage) {
+                iframe.style.display = 'none';
+                img.style.display = 'block';
+                img.src = src;
+                img.alt = fileName;
+            } else {
+                img.style.display = 'none';
+                iframe.style.display = 'block';
+                iframe.src = src;
+            }
+        }
         
         document.querySelector('.close').onclick = function() {
             document.getElementById('imageModal').classList.remove('show');
+        };
+
+        document.querySelector('.close-cert').onclick = function() {
+            const modal = document.getElementById('certificateModal');
+            modal.classList.remove('show');
+            // Clear iframe src to stop loading
+            document.getElementById('modalCertificate').src = '';
         };
         
         document.getElementById('imageModal').onclick = function(e) {
@@ -235,26 +360,42 @@
                 this.classList.remove('show');
             }
         };
+
+        document.getElementById('certificateModal').onclick = function(e) {
+            if (e.target === this) {
+                this.classList.remove('show');
+                document.getElementById('modalCertificate').src = '';
+            }
+        };
         
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 document.getElementById('imageModal').classList.remove('show');
+                const certModal = document.getElementById('certificateModal');
+                certModal.classList.remove('show');
+                document.getElementById('modalCertificate').src = '';
             }
         });
 
         function showSection(sectionId) {
             const scrollSections = document.getElementById('scroll-sections');
             const portfolioSection = document.getElementById('portfolio');
+            const certificatesSection = document.getElementById('certificates');
             const downloadSection = document.getElementById('download');
 
             scrollSections.style.display = 'none';
             portfolioSection.classList.add('section-hidden');
+            certificatesSection.classList.add('section-hidden');
             downloadSection.classList.add('section-hidden');
             
             if (sectionId === "portfolio") {
                 portfolioSection.classList.remove('section-hidden');
                 portfolioSection.classList.add('section-animate');
                 loadPortfolio(); 
+            } else if (sectionId === "certificates") {
+                certificatesSection.classList.remove('section-hidden');
+                certificatesSection.classList.add('section-animate');
+                loadCertificates();
             } else if (sectionId === "download") {
                 downloadSection.classList.remove('section-hidden');
                 downloadSection.classList.add('section-animate');
@@ -269,10 +410,12 @@
         function scrollToSection(id) {
             const scrollSections = document.getElementById('scroll-sections');
             const portfolioSection = document.getElementById('portfolio');
+            const certificatesSection = document.getElementById('certificates');
             const downloadSection = document.getElementById('download');
             
             scrollSections.style.display = 'block';
             portfolioSection.classList.add('section-hidden');
+            certificatesSection.classList.add('section-hidden');
             downloadSection.classList.add('section-hidden');
 
             const targetElement = document.getElementById(id);
@@ -298,10 +441,12 @@
     function scrollToSection(id) {
         const scrollSections = document.getElementById('scroll-sections');
         const portfolioSection = document.getElementById('portfolio');
+        const certificatesSection = document.getElementById('certificates');
         const downloadSection = document.getElementById('download');
         
         scrollSections.style.display = 'block';
         portfolioSection.classList.add('section-hidden');
+        certificatesSection.classList.add('section-hidden');
         downloadSection.classList.add('section-hidden');
         
         const headerHeight = document.querySelector('header').offsetHeight;
