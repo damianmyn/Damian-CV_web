@@ -14,10 +14,15 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Debug directory contents
+        run: |
+          ls -R Certificate || echo "Certificate directory not found"
+          find Certificate -maxdepth 1 -type f || echo "No files found in Certificate"
+
       - name: Generate certificateFiles.js
         run: |
           echo "const certificateFiles = [" > Certificate/certificateFiles.js
-          find Certificate -type f \( -name "*.pdf" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.webp" -o -name "*.svg" \) | sort | while read file; do
+          find Certificate -maxdepth 1 -type f \( -iname "*.pdf" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.webp" -o -iname "*.svg" \) | sort | while read file; do
             fname=$(basename "$file")
             echo "  \"$fname\"," >> Certificate/certificateFiles.js
           done
