@@ -1,42 +1,32 @@
-name: Generate Certificate List
+name: Generate Certificate File List
 
 on:
   push:
-    branches:
-      - master
-    paths:
-      - 'Certificate/**'
+    branches: [master] # or your default branch
+
+permissions:
+  contents: write
 
 jobs:
-  generate:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Generate certificate list
-        id: generate-list
+      - name: Generate certificateFiles.js
         run: |
-          # Find all files and create a comma-separated list
-          file_list=$(find Certificate -type f \( -name "*.pdf" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.webp" -o -name "*.svg" \) -printf "%f\n" | tr '\n' ',' | sed 's/,$//')
-          
-          # Format the list as a JSON array (empty if no files)
-          if [ -z "$file_list" ]; then
-            json_array="[]"
-            echo "No certificates found. Generating empty list."
-          else
-            json_array="[\"$(echo "$file_list" | sed 's/,/","/g')\"]"
-            echo "Found certificates: $file_list"
-          fi
-          
-          # Write to certificates.json
-          echo "$json_array" > certificates.json
-          cat certificates.json  # Log for debugging
+          echo "const certificateFiles = [" > Certificate/certificateFiles.js
+          find Certificates -type f \( -name "*.pdf" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.webp" -o -name "*.svg" \) | sort | while read file; do
+            fname=$(basename "$file")
+            echo "  \"$fname\"," >> Certificate/certificateFiles.js
+          done
+          echo "];" >> Certificate/certificateFiles.js
 
-      - name: Commit and push changes
+      - name: Commit and push certificateFiles.js
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add certificates.json
-          git commit -m "chore: Update certificate list" || echo "No changes to commit"
-          git push || echo "No changes to push"
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add Certificate/certificateFiles.js
+          git diff --cached --quiet || git commit -m "Update certificateFiles.js [auto]"
+          git push
