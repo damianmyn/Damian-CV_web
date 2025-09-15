@@ -17,7 +17,7 @@ jobs:
       - name: Generate certificateFiles.js
         run: |
           echo "const certificateFiles = [" > Certificate/certificateFiles.js
-          find Certificates -type f \( -name "*.pdf" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.webp" -o -name "*.svg" \) | sort | while read file; do
+          find Certificate -type f \( -name "*.pdf" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.webp" -o -name "*.svg" \) | sort | while read file; do
             fname=$(basename "$file")
             echo "  \"$fname\"," >> Certificate/certificateFiles.js
           done
