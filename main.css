@@ -341,3 +341,20 @@
             margin-right: 8px;
             display: inline-block;
         }
+
+        /* Make the navbar container transparent */
+        #navbar {
+            background: transparent !important;
+        }
+        
+        /* Keep mobile menu visible with semi-transparent background */
+        #nav-menu {
+            background-color: rgba(38, 38, 36, 0.95) !important; /* Semi-transparent bg-creamy for mobile */
+        }
+        
+        /* Make nav menu transparent only on desktop */
+        @media (min-width: 1024px) {
+            #nav-menu {
+                background: transparent !important;
+            }
+        }

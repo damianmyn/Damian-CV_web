@@ -877,6 +877,17 @@ nav {
   margin-right: 8px;
   display: inline-block;
 }
+#navbar {
+  background: transparent !important;
+}
+#nav-menu {
+  background-color: rgba(38, 38, 36, 0.95) !important;
+}
+@media (min-width: 1024px) {
+  #nav-menu {
+    background: transparent !important;
+  }
+}
 @property --tw-divide-y-reverse {
   syntax: "*";
   inherits: false;
