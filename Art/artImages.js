@@ -1,5 +1,6 @@
 const artImages = [
   "At the end of everything.webp",
+  "DM Favicon.webp",
   "EVEREST.webp",
   "STEPHAN HAWKING.webp",
   "abberation.webp",
