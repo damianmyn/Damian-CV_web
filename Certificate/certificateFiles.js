@@ -1,4 +1,5 @@
 const certificateFiles = [
+  "AWS Certified Cloud Practitioner certificate.pdf",
   "CompTIA Security  ce certificate.pdf",
   "Cyber Security (Short Course) Certificate.pdf",
   "Data_ScienceZTM.pdf",
