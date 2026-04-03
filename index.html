@@ -92,6 +92,7 @@
                     <li>Rust</li>
                     <li>Golang</li>
                     <li>MySQL</li>
+                    <li>OraclSQL</li>
                     <li>SQLServer</li>
                     <li>MongoDB</li>
                     <li>Linux Systems</li>
@@ -199,6 +200,90 @@
         </div>
     </footer>
 
+    <script type="module">
+        import {
+            measureTextHeight,
+            getTextLines,
+            calculatePortfolioTextMetrics,
+            autoSizeContainer,
+            initializeAutoSizing,
+            initializeMutationObserver
+        } from './pretext-utils.js'
+
+        // Make functions globally accessible for inline event handlers
+        window.pretextUtils = {
+            measureTextHeight,
+            getTextLines,
+            calculatePortfolioTextMetrics,
+            autoSizeContainer,
+            initializeAutoSizing,
+            initializeMutationObserver
+        }
+
+        // Initialize Pretext utilities on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            initializeAutoSizing()
+            initializeMutationObserver()
+            optimizePortfolioSection()
+            optimizeCertificateSection()
+            optimizeTextSections()
+        })
+
+        // Optimize portfolio section descriptions
+        function optimizePortfolioSection() {
+            const descriptions = document.querySelectorAll('#portfolio p')
+            descriptions.forEach(desc => {
+                const font = '14px Arial'
+                const maxWidth = desc.offsetWidth || 300
+                const lineHeight = 20
+                autoSizeContainer(desc, font, maxWidth, lineHeight)
+            })
+        }
+
+        // Optimize certificate section descriptions
+        function optimizeCertificateSection() {
+            const descriptions = document.querySelectorAll('#certificates p')
+            descriptions.forEach(desc => {
+                const font = '14px Arial'
+                const maxWidth = desc.offsetWidth || 300
+                const lineHeight = 20
+                autoSizeContainer(desc, font, maxWidth, lineHeight)
+            })
+        }
+
+        // Optimize all text sections
+        function optimizeTextSections() {
+            const sections = ['about', 'education', 'experience', 'skills', 'contact']
+            
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId)
+                if (!section) return
+
+                const paragraphs = section.querySelectorAll('p')
+                const font = '14px Arial'
+                const lineHeight = 20
+
+                paragraphs.forEach(p => {
+                    const maxWidth = p.offsetWidth || 300
+                    autoSizeContainer(p, font, maxWidth, lineHeight)
+                })
+
+                const listItems = section.querySelectorAll('li')
+                listItems.forEach(li => {
+                    const maxWidth = li.offsetWidth || 300
+                    autoSizeContainer(li, font, maxWidth, lineHeight)
+                })
+            })
+        }
+
+        // Re-optimize on window resize
+        window.addEventListener('resize', () => {
+            optimizePortfolioSection()
+            optimizeCertificateSection()
+            optimizeTextSections()
+        }, { passive: true })
+    </script>
+
     <script src="Art/artImages.js"></script>
     <script src="Certificate/certificateFiles.js"></script>
     <script>
@@ -254,6 +339,17 @@
             
             loading.style.display = 'none';
             gallery.style.display = 'block';
+            
+            // Optimize portfolio text with Pretext
+            if (window.pretextUtils) {
+                const portfolioText = gallery.parentElement.querySelector('p');
+                if (portfolioText) {
+                    const font = '14px Arial';
+                    const maxWidth = portfolioText.offsetWidth || 300;
+                    const lineHeight = 20;
+                    window.pretextUtils.autoSizeContainer(portfolioText, font, maxWidth, lineHeight);
+                }
+            }
         }
 
         function loadCertificates() {
@@ -302,6 +398,26 @@
 
             loading.style.display = 'none';
             gallery.style.display = 'grid';
+            
+            // Optimize certificate text with Pretext
+            if (window.pretextUtils) {
+                const certificatesText = gallery.parentElement.querySelector('p');
+                if (certificatesText) {
+                    const font = '14px Arial';
+                    const maxWidth = certificatesText.offsetWidth || 300;
+                    const lineHeight = 20;
+                    window.pretextUtils.autoSizeContainer(certificatesText, font, maxWidth, lineHeight);
+                }
+                
+                // Optimize certificate card titles
+                const cardTitles = gallery.querySelectorAll('h3');
+                cardTitles.forEach(title => {
+                    const font = '14px Arial';
+                    const maxWidth = title.offsetWidth || 250;
+                    const lineHeight = 16;
+                    window.pretextUtils.autoSizeContainer(title, font, maxWidth, lineHeight);
+                });
+            }
         }
         
         function openModal(src, alt) {
