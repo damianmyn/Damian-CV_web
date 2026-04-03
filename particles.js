@@ -1,4 +1,3 @@
-// Particles animation system
 class ParticleSystem {
     constructor(canvasId = 'particlesCanvas') {
         this.canvas = document.getElementById(canvasId);
@@ -42,11 +41,9 @@ class ParticleSystem {
     
     updateParticles() {
         this.particles.forEach(particle => {
-            // Update position
             particle.x += particle.vx;
             particle.y += particle.vy;
             
-            // Bounce off walls
             if (particle.x - particle.radius < 0 || particle.x + particle.radius > this.canvas.width) {
                 particle.vx *= -1;
                 particle.x = Math.max(particle.radius, Math.min(this.canvas.width - particle.radius, particle.x));
@@ -79,7 +76,6 @@ class ParticleSystem {
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 
                 if (distance < this.connectionDistance) {
-                    // Opacity based on distance
                     const opacity = 1 - (distance / this.connectionDistance);
                     this.ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.5})`;
                     
@@ -93,7 +89,6 @@ class ParticleSystem {
     }
     
     animate = () => {
-        // Clear canvas with dark charcoal background
         this.ctx.fillStyle = '#a35132';
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         
@@ -105,7 +100,6 @@ class ParticleSystem {
     }
 }
 
-// Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     new ParticleSystem('particlesCanvas');
 });

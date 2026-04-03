@@ -1,19 +1,5 @@
-/**
- * Pretext Utility Module
- * Provides text measurement and layout utilities for the CV website
- * Uses @chenglou/pretext for accurate text measurement without DOM reflow
- */
-
 import { prepare, layout, prepareWithSegments, layoutWithLines, walkLineRanges } from '@chenglou/pretext'
 
-/**
- * Measure text height without touching the DOM
- * @param {string} text - The text to measure
- * @param {string} font - Font specification (e.g., '16px Arial')
- * @param {number} maxWidth - Maximum width constraint in pixels
- * @param {number} lineHeight - Line height in pixels
- * @returns {Object} Object with height and lineCount properties
- */
 export function measureTextHeight(text, font, maxWidth, lineHeight) {
   try {
     const prepared = prepare(text, font)
@@ -25,14 +11,6 @@ export function measureTextHeight(text, font, maxWidth, lineHeight) {
   }
 }
 
-/**
- * Get detailed line information for text layout
- * @param {string} text - The text to layout
- * @param {string} font - Font specification (e.g., '16px Arial')
- * @param {number} maxWidth - Maximum width constraint in pixels
- * @param {number} lineHeight - Line height in pixels
- * @returns {Object} Object with lines array and height information
- */
 export function getTextLines(text, font, maxWidth, lineHeight) {
   try {
     const prepared = prepareWithSegments(text, font)
@@ -44,25 +22,12 @@ export function getTextLines(text, font, maxWidth, lineHeight) {
   }
 }
 
-/**
- * Find the optimal width to fit text in a given height
- * Useful for responsive containers that need balanced text layout
- * @param {string} text - The text to fit
- * @param {string} font - Font specification
- * @param {number} targetHeight - Target height constraint
- * @param {number} lineHeight - Line height in pixels
- * @param {number} minWidth - Minimum width to try
- * @param {number} maxWidth - Maximum width to try
- * @returns {Object} Object with optimal width and layout info
- */
 export function findOptimalWidth(text, font, targetHeight, lineHeight, minWidth = 100, maxWidth = 1000) {
   try {
     const prepared = prepareWithSegments(text, font)
     let bestWidth = maxWidth
     let bestHeight = Infinity
     let bestLayout = null
-
-    // Binary search for optimal width
     let low = minWidth
     let high = maxWidth
 
@@ -92,13 +57,6 @@ export function findOptimalWidth(text, font, targetHeight, lineHeight, minWidth 
   }
 }
 
-/**
- * Automatically adjust container height based on text content
- * @param {HTMLElement} element - The element containing text
- * @param {string} font - Font specification
- * @param {number} maxWidth - Maximum width of the container
- * @param {number} lineHeight - Line height value
- */
 export function autoSizeContainer(element, font, maxWidth, lineHeight) {
   if (!element) return
 
@@ -112,16 +70,9 @@ export function autoSizeContainer(element, font, maxWidth, lineHeight) {
   }
 }
 
-/**
- * Get the natural width of text (what width it needs when not wrapped)
- * @param {string} text - The text to measure
- * @param {string} font - Font specification
- * @returns {number} The natural width in pixels
- */
 export function getTextNaturalWidth(text, font) {
   try {
     const prepared = prepareWithSegments(text, font)
-    // Measure at a very large width to get natural width
     const { lines } = layoutWithLines(prepared, 10000, 20)
     if (lines.length > 0) {
       return Math.max(...lines.map(line => line.width))
@@ -133,26 +84,11 @@ export function getTextNaturalWidth(text, font) {
   }
 }
 
-/**
- * Check if text will overflow in a container without wrapping
- * @param {string} text - The text to check
- * @param {string} font - Font specification
- * @param {number} containerWidth - Width of the container
- * @returns {boolean} True if text will overflow, false otherwise
- */
 export function willTextOverflow(text, font, containerWidth) {
   const naturalWidth = getTextNaturalWidth(text, font)
   return naturalWidth > containerWidth
 }
 
-/**
- * Truncate text to fit within a width constraint
- * @param {string} text - The text to truncate
- * @param {string} font - Font specification
- * @param {number} maxWidth - Maximum width in pixels
- * @param {string} ellipsis - Truncation indicator (default: '...')
- * @returns {string} Truncated text
- */
 export function truncateToWidth(text, font, maxWidth, ellipsis = '...') {
   try {
     if (getTextNaturalWidth(text, font) <= maxWidth) {
@@ -176,14 +112,6 @@ export function truncateToWidth(text, font, maxWidth, ellipsis = '...') {
   }
 }
 
-/**
- * Calculate text metrics for portfolio descriptions
- * @param {string} description - Portfolio item description
- * @param {string} font - Font specification
- * @param {number} containerWidth - Container width
- * @param {number} lineHeight - Line height
- * @returns {Object} Text metrics including height, line count, and lines
- */
 export function calculatePortfolioTextMetrics(description, font, containerWidth, lineHeight) {
   try {
     const { lines, height, lineCount, success } = getTextLines(description, font, containerWidth, lineHeight)
@@ -206,11 +134,6 @@ export function calculatePortfolioTextMetrics(description, font, containerWidth,
   }
 }
 
-/**
- * Batch measure multiple text elements (performance optimized)
- * @param {Array} items - Array of items with text and font properties
- * @returns {Array} Array of measurement results
- */
 export function batchMeasureText(items) {
   return items.map(item => {
     try {
@@ -228,10 +151,6 @@ export function batchMeasureText(items) {
   })
 }
 
-/**
- * Initialize automatic text sizing for elements with data attributes
- * Add data-pretext-font, data-pretext-width, data-pretext-lineheight to elements
- */
 export function initializeAutoSizing() {
   const elementsToSize = document.querySelectorAll('[data-pretext-font]')
 
@@ -241,8 +160,6 @@ export function initializeAutoSizing() {
     const lineHeight = parseFloat(element.getAttribute('data-pretext-lineheight')) || 20
 
     autoSizeContainer(element, font, maxWidth, lineHeight)
-
-    // Re-calculate on window resize
     window.addEventListener('resize', () => {
       const currentWidth = parseFloat(element.getAttribute('data-pretext-width')) || element.offsetWidth
       autoSizeContainer(element, font, currentWidth, lineHeight)
@@ -250,10 +167,6 @@ export function initializeAutoSizing() {
   })
 }
 
-/**
- * Observer to handle dynamic content updates
- * Automatically size new text elements as they're added to the DOM
- */
 export function initializeMutationObserver() {
   const observer = new MutationObserver(mutations => {
     mutations.forEach(mutation => {
@@ -279,10 +192,6 @@ export function initializeMutationObserver() {
   return observer
 }
 
-/**
- * Performance logging for text measurements
- * Use in development to monitor measurement performance
- */
 export function logMeasurementPerformance(text, font, maxWidth, lineHeight) {
   const start = performance.now()
   const result = measureTextHeight(text, font, maxWidth, lineHeight)

@@ -256,7 +256,7 @@
             })
         }
 
-        // Optimize all text sections
+       
         function optimizeTextSections() {
             const sections = ['about', 'education', 'experience', 'skills', 'contact']
             
@@ -281,7 +281,7 @@
             })
         }
 
-        // Re-optimize on window resize
+        
         window.addEventListener('resize', () => {
             optimizePortfolioSection()
             optimizeCertificateSection()
@@ -346,7 +346,7 @@
             loading.style.display = 'none';
             gallery.style.display = 'block';
             
-            // Optimize portfolio text with Pretext
+            // Pretext
             if (window.pretextUtils) {
                 const portfolioText = gallery.parentElement.querySelector('p');
                 if (portfolioText) {
@@ -384,7 +384,6 @@
                 const filePath = `Certificate/${fileName}`;
                 const thumbnailPath = isPDF ? `Certificate/thumbnails/${fileName.replace('.pdf', '.jpg')}` : filePath;
 
-                // Create the preview image element
                 previewHtml = `<img src="${thumbnailPath}" alt="${fileName.replace(/\.[^/.]+$/, "")} Preview" class="w-full h-auto object-cover rounded-lg mb-4" onerror="this.src='path/to/placeholder.jpg'; this.alt='Preview not available';" />`;
 
                 certificateCard.innerHTML = `
@@ -405,7 +404,6 @@
             loading.style.display = 'none';
             gallery.style.display = 'grid';
             
-            // Optimize certificate text with Pretext
             if (window.pretextUtils) {
                 const certificatesText = gallery.parentElement.querySelector('p');
                 if (certificatesText) {
@@ -415,7 +413,6 @@
                     window.pretextUtils.autoSizeContainer(certificatesText, font, maxWidth, lineHeight);
                 }
                 
-                // Optimize certificate card titles
                 const cardTitles = gallery.querySelectorAll('h3');
                 cardTitles.forEach(title => {
                     const font = '14px Arial';
@@ -460,7 +457,6 @@
         document.querySelector('.close-cert').onclick = function() {
             const modal = document.getElementById('certificateModal');
             modal.classList.remove('show');
-            // Clear iframe src to stop loading
             document.getElementById('modalCertificate').src = '';
         };
         
