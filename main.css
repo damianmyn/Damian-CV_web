@@ -59,6 +59,7 @@ body::before {
   z-index: 0;
   top: 215px;
   transition: top 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: moveGrid 4s linear infinite;
 }
 
 body.header-scrolled::before {
@@ -511,7 +512,7 @@ section ul li::before {
 
 .button-primary {
   background: var(--accent-orange) !important;
-  color: var(--bg-primary) !important;
+  color: var(--text-dark) !important;
   box-shadow: 14px 14px 0 rgba(0, 0, 0, 0.22);
   padding: 1rem 2rem !important;
   font-size: 0.9rem !important;
@@ -521,7 +522,7 @@ section ul li::before {
   transform: translateY(-8px) !important;
   box-shadow: 20px 24px 0 rgba(0, 0, 0, 0.35) !important;
   background: var(--accent-yellow) !important;
-  color: var(--bg-primary) !important;
+  color: var(--text-dark) !important;
   padding: 1rem 2rem !important;
   font-size: 0.9rem !important;
 }
@@ -751,4 +752,9 @@ section a:hover {
 .contact-icon:hover {
   transform: scale(1.15) rotate(-10deg);
   filter: drop-shadow(4px 4px 0 var(--accent-orange));
+}
+
+@keyframes moveGrid {
+  0% { background-position: 0px 0px; }
+  100% { background-position: 40px 40px; }
 }
