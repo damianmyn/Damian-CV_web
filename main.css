@@ -9,12 +9,13 @@
 
 :root {
   /* Neobrutalist Color Palette */
-  --bg-primary: #ffffff;
+  --bg-primary: #f0513c;
   --bg-secondary: #f5f5f5;
   --text-dark: #1a1a1a;
   --text-muted: #4a4a4a;
   --accent-orange: #ff6b35;
   --accent-yellow: #ffd60a;
+  --accent-muted-yellow: #ffe8a1;
   --accent-lime: #76b82a;
   --border-black: #0a0a0a;
   --shadow-offset: 16px;
@@ -70,7 +71,7 @@ header {
   left: 0;
   width: 100%;
   z-index: 70;
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
   border-bottom: 8px solid var(--border-black);
   box-shadow: 0 8px 0 rgba(0, 0, 0, 0.1);
   animation: slideDownHeader 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
@@ -118,6 +119,7 @@ header.header-scrolled .name-strip-container p {
 }
 
 header .container {
+  background-color: var(--bg-secondary);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -166,13 +168,13 @@ header .container {
   line-height: 1.1;
   letter-spacing: 0.08em;
   font-weight: 700;
-  color: var(--bg-primary) !important;
+  color: var(--bg-secondary) !important;
   text-transform: uppercase;
   transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .name-strip-container p {
-  color: var(--bg-primary) !important;
+  color: var(--bg-secondary) !important;
   font-size: 0.9rem;
   letter-spacing: 0.15em;
   margin-top: 0.5rem;
@@ -267,7 +269,6 @@ main {
 }
 
 section {
-  background: color(srgb red rgba(0, 128, 0, 0) rgba(0, 0, 255, 0));
   border: 7px solid var(--border-black);
   box-shadow: 20px 20px 0 rgba(0, 0, 0, 0.18);
   padding: 2.8rem;
