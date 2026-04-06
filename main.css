@@ -455,29 +455,39 @@ section ul li::before {
   font-weight: 700;
   letter-spacing: 0.14em;
   padding: 1rem 2rem;
-  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   border: 5px solid var(--border-black);
   font-family: 'Space Mono', monospace;
   font-size: 0.9rem;
   cursor: pointer;
+  width: auto;
+  height: auto;
+  min-width: auto;
 }
 
 .button-primary {
-  background: var(--accent-orange);
-  color: var(--bg-primary);
+  background: var(--accent-orange) !important;
+  color: var(--bg-primary) !important;
   box-shadow: 14px 14px 0 rgba(0, 0, 0, 0.22);
+  padding: 1rem 2rem !important;
+  font-size: 0.9rem !important;
 }
 
 .button-primary:hover {
-  transform: translateY(-4px) translateX(-2px);
-  box-shadow: 18px 18px 0 rgba(0, 0, 0, 0.28);
-  background: var(--accent-yellow);
-  color: var(--text-dark);
+  transform: translateY(-8px) !important;
+  box-shadow: 20px 24px 0 rgba(0, 0, 0, 0.35) !important;
+  background: var(--accent-orange) !important;
+  color: var(--bg-primary) !important;
+  padding: 1rem 2rem !important;
+  font-size: 0.9rem !important;
 }
 
 .button-primary:active {
-  transform: translateY(2px) translateX(2px);
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px) !important;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.15) !important;
+  background: var(--accent-orange) !important;
+  padding: 1rem 2rem !important;
+  font-size: 0.9rem !important;
 }
 
 footer {
