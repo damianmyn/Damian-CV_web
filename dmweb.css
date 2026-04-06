@@ -606,8 +606,8 @@ h2 {
   overflow: hidden;
   filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3));
 }
-.bg-creamy {
-  background-color: #262624;
+.section-bg {
+  background: linear-gradient(to bottom right, #4ed9cb, #1bbbab);
 }
 .name-strip-container::after {
   content: '';
