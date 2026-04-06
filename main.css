@@ -833,8 +833,6 @@ section a:hover:not(.contact-item) {
 }
 
 .contact-label:hover {
-    color: var(--text-dark) !important;
-    background-color: var(--accent-lime);
     box-shadow: 4px 4px;
     transform: translateX(-2px) translateY(-2px);
     transition: 0.3s;
