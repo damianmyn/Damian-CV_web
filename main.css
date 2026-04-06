@@ -755,7 +755,7 @@ section a:hover:not(.contact-item) {
 
 .container2 {
   display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
+  grid-template-columns: 2fr 1fr !important;
   gap: 20px !important;
 }
 
