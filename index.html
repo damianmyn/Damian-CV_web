@@ -286,20 +286,30 @@
     <script src="particles.js"></script>
     <script>
         let lastScrollY = window.scrollY;
+        let isHeaderScrolled = false;
         
         window.addEventListener('scroll', () => {
             const currentScrollY = window.scrollY;
             const header = document.querySelector('header');
-            const nav = document.getElementById('navbar');
+            const body = document.body;
 
-            if (currentScrollY > lastScrollY && currentScrollY > 20) {
-                header.classList.add('scrolled');
+            // Shrink header when scrolling down more than 50px
+            if (currentScrollY > 50) {
+                if (!isHeaderScrolled) {
+                    header.classList.add('header-scrolled');
+                    body.classList.add('header-scrolled');
+                    isHeaderScrolled = true;
+                }
             } else {
-                header.classList.remove('scrolled');
+                if (isHeaderScrolled) {
+                    header.classList.remove('header-scrolled');
+                    body.classList.remove('header-scrolled');
+                    isHeaderScrolled = false;
+                }
             }
 
             lastScrollY = currentScrollY;
-        });
+        }, { passive: true });
 
         function loadPortfolio() {
             const gallery = document.getElementById('portfolio-gallery');

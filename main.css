@@ -35,9 +35,14 @@ body {
   color: var(--text-dark);
   background: var(--bg-primary);
   overflow-x: hidden;
-  padding-top: 96px;
+  padding-top: 215px;
   position: relative;
   font-weight: 400;
+  transition: padding-top 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+body.header-scrolled {
+  padding-top: 65px;
 }
 
 /* Grid background pattern */
@@ -51,7 +56,12 @@ body::before {
   background-size: 40px 40px;
   pointer-events: none;
   z-index: 0;
-  top: 96px;
+  top: 215px;
+  transition: top 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+body.header-scrolled::before {
+  top: 65px;
 }
 
 header {
@@ -64,6 +74,7 @@ header {
   border-bottom: 8px solid var(--border-black);
   box-shadow: 0 8px 0 rgba(0, 0, 0, 0.1);
   animation: slideDownHeader 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @keyframes slideDownHeader {
@@ -75,6 +86,35 @@ header {
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+header.header-scrolled {
+  padding: 0.25rem 0;
+  border-bottom-width: 3px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+header.header-scrolled .container {
+  padding: 0.25rem 0;
+}
+
+header.header-scrolled .name-strip-container {
+  padding: 0.3rem 1.2rem;
+  min-width: auto;
+  margin-left: -100vw;
+  padding-left: calc(100vw + 1rem);
+}
+
+header.header-scrolled .name-strip-container h1 {
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1;
+}
+
+header.header-scrolled .name-strip-container p {
+  font-size: 0.55rem;
+  margin-top: 0.1rem;
+  display: none;
 }
 
 header .container {
@@ -101,6 +141,7 @@ header .container {
               calc(var(--shadow-offset) * 2) calc(var(--shadow-offset) * 2) 0 rgba(0, 0, 0, 0.15);
   overflow: visible;
   animation: slideInNameStrip 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s backwards;
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @keyframes slideInNameStrip {
@@ -127,6 +168,7 @@ header .container {
   font-weight: 700;
   color: var(--bg-primary) !important;
   text-transform: uppercase;
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .name-strip-container p {
@@ -136,6 +178,7 @@ header .container {
   margin-top: 0.5rem;
   font-weight: 400;
   text-transform: uppercase;
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 #navbar {
