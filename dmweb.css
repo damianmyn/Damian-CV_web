@@ -638,7 +638,7 @@ footer {
   display: block;
 }
 .section-animate {
-  animation: fadeIn 0.5s ease-in-out forwards;
+  animation: fadeIn 0.4s ease-in-out forwards;
 }
 @keyframes fadeIn {
   from {

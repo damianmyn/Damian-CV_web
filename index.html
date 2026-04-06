@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <!-- Particles Background Canvas -->
-   <!-- <canvas id="particlesCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;"></canvas> -->
-
     <header class="py-6">
         <div class="container mx-auto px-4 flex items-center justify-between">
             <div class="name-strip-container">
@@ -39,31 +36,46 @@
     <main class="container mx-auto px-4 py-8 main-container">
         
         <!-- Scrollable Sections -->
-         <div class="container2"
         <div id="scroll-sections">
-            <section id="about" class="section-bg p-6 rounded-lg shadow-md mb-6">
-                <h2 class="text-4xl font-semibold mb-4">About Me</h2>
-                <p>
-                    I am a hard working individual that finds creative solutions to problems and enjoys a challenge. I am interested in programming, cyber security and graphic design, Linux systems administration and systems architecture as it combines both problem solving and creative thinking. I enjoy learning new skills and am always eager to learn. 
-                </p>
-            </section>
+            <div class="container2">
+                <section id="about" class="section-bg p-6 rounded-lg shadow-md mb-6">
+                    <h2 class="text-4xl font-semibold mb-4">About Me</h2>
+                    <p>
+                        I am a hard working individual that finds creative solutions to problems and enjoys a challenge. I am interested in programming, cyber security and graphic design, Linux systems administration and systems architecture as it combines both problem solving and creative thinking. I enjoy learning new skills and am always eager to learn. 
+                    </p>
+                </section>
 
-            <section id="contact" class="section-bg p-6 rounded-lg shadow-md mb-6">
-                <h2 class="text-4xl font-semibold mb-4">Contact Me</h2>
-                <p>
-                    <img src="ico/mail.png" alt="Email Icon" class="contact-icon">
-                    <a href="mailto:damian.cv@protonmail.com">damian.cv@protonmail.com</a>
-                    <br>
-                    <br>
-                    <img src="ico/telephone.png" alt="Phone Icon" class="contact-icon">
-                    +27 76 249 4252 
-                    <br>
-                    <br>
-                    <img src="ico/github-mark-white.png" alt="GitHub Icon" class="contact-icon">
-                    <a href="https://github.com/damianmyn">github.com/damianmyn</a>
-                </p>
-            </section>
-        </div>
+                <section id="contact" class="section-bg p-6 rounded-lg shadow-md mb-6">
+                    <h2 class="text-4xl font-semibold mb-4">Contact Me</h2>
+                <div class="contact-list">
+
+                <div class="contact-item" onclick="this.classList.toggle('active')">
+                    <div class="contact-icon-wrap">
+                        <img src="ico/mail.png" alt="Email Icon" class="contact-icon">
+                    </div>
+                    <span class="contact-label">
+                        <a href="mailto:damian.cv@protonmail.com">damian.cv@protonmail.com</a>
+                    </span>
+                </div>
+
+                <div class="contact-item" onclick="this.classList.toggle('active')">
+                    <div class="contact-icon-wrap">
+                        <img src="ico/telephone.png" alt="Phone Icon" class="contact-icon">
+                    </div>
+                    <span class="contact-label">+27 76 249 4252</span>
+                </div>
+
+                <div class="contact-item" onclick="this.classList.toggle('active')">
+                    <div class="contact-icon-wrap">
+                        <img src="ico/github-mark-white.png" alt="GitHub Icon" class="contact-icon">
+                    </div>
+                    <span class="contact-label">
+                        <a href="https://github.com/damianmyn">github.com/damianmyn</a>
+                    </span>
+                </div>
+                </div>
+                </section>
+            </div>
 
             <section id="education" class="section-bg p-6 rounded-lg shadow-md mb-6">
                 <h2 class="text-4xl font-semibold mb-4">Education</h2>

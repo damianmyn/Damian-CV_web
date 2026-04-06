@@ -758,3 +758,86 @@ section a:hover {
   grid-template-columns: 1fr 1fr !important;
   gap: 20px !important;
 }
+
+/* Contact Section - Vertical slide-out layout */
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    width: fit-content;
+    min-width: 60px;
+}
+
+.contact-icon-wrap {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+    z-index: 1;
+}
+
+.contact-item .contact-icon {
+    width: 28px !important;
+    margin: 0 !important;
+    display: block;
+    filter: drop-shadow(1px 1px 0 rgba(0,0,0,0.2));
+    transition: transform 0.3s ease;
+}
+
+.contact-label {
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 0;
+    padding: 0;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 0.05em;
+    transition: max-width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.4s ease,
+                padding 0.4s ease;
+}
+
+.contact-label a {
+    color: var(--accent-orange) !important;
+    text-decoration: none;
+    border-bottom: none !important;
+    background: none !important;
+    padding: 0 !important;
+}
+
+/* Hover — slides text out */
+.contact-item:hover .contact-label,
+.contact-item.active .contact-label {
+    max-width: 400px;
+    opacity: 1;
+    padding: 0 1.2rem;
+}
+
+.contact-label:hover {
+    color: var(--text-dark) !important;
+    background-color: #ffd60a;
+}
+
+.contact-label a:hover {
+    color: var(--text-dark) !important;
+    background-color: #ffd60a;
+}
+
+.contact-item:hover .contact-icon,
+.contact-item.active .contact-icon {
+    transform: scale(1.15) rotate(-10deg);
+}
