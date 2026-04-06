@@ -377,7 +377,7 @@
                 const fileExtension = fileName.split('.').pop().toLowerCase();
                 const certificateCard = document.createElement('div');
                 certificateCard.className = 'bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer flex flex-col items-center text-center';
-                certificateCard.style.backgroundColor = '#1f1f1f';
+                certificateCard.style.backgroundColor = 'oklch(17.74 0.02 97.52)';
 
                 const isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(fileExtension);
                 const isPDF = fileExtension === 'pdf';
