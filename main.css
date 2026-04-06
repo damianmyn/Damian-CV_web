@@ -666,7 +666,7 @@ section:hover {
 }
 
 /* Animation for links */
-section a {
+section a:not(.contact-item) {
   position: relative;
   color: var(--accent-orange);
   text-decoration: none;
@@ -675,7 +675,7 @@ section a {
   border-bottom: 3px solid var(--accent-yellow);
 }
 
-section a:hover {
+section a:hover:not(.contact-item) {
   color: var(--text-dark);
   background: var(--accent-yellow);
   padding: 0 4px;
