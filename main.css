@@ -830,11 +830,13 @@ section a:hover {
 .contact-label:hover {
     color: var(--text-dark) !important;
     background-color: #ffd60a;
+    border: #0a0a0a 3px solid !important;
+    box-shadow: 4px 4px;
 }
 
 .contact-label a:hover {
     color: var(--text-dark) !important;
-    background-color: #ffd60a;
+    background-color: #ffd60a; 
 }
 
 .contact-item:hover .contact-icon,
