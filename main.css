@@ -923,20 +923,37 @@ section a:hover:not(.contact-item) {
 
 .landing-label {
   font-family: 'Space Mono', monospace;
+  margin: 0 auto;
+  overflow: hidden;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--accent-orange);
-  border: 3px solid var(--accent-orange);
-  display: inline-block;
-  padding: 0.35rem 0.9rem;
-  margin-bottom: 2rem;
-  animation: fadeSlideIn 0.6s ease 0.1s backwards;
+  animation: fadeSlideInRight 0.6s ease 0.1s backwards;
 }
 
-@keyframes fadeSlideIn {
-  from { opacity: 0; transform: translateX(-20px); }
+.landing-label-box {
+  border: 3px solid var(--accent-orange);
+  padding: 0.35rem 0.9rem;
+  display: inline-block;
+   animation: fadeSlideInLeft 0.6s ease 0.1s backwards;
+}
+
+/* Reveal animation */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+
+@keyframes fadeSlideInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeSlideInRight {
+  from { opacity: 0; transform: translateX(100px); }
   to   { opacity: 1; transform: translateX(0); }
 }
 
