@@ -288,7 +288,7 @@ section:nth-child(4) { animation-delay: 0.4s; }
 section:nth-child(5) { animation-delay: 0.5s; }
 
 section#about {
-  border-color: var(--accent-red);
+  border-color: var(--accent-yellow);
   border-width: 8px;
 }
 
