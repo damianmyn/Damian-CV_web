@@ -783,8 +783,9 @@ section a:hover:not(.contact-item) {
 
 .contact-icon-wrap {
     flex-shrink: 0;
-    width: 60px !important; 
-    height: 60px !important;
+    width: 30px !important; 
+    height: 30px !important;
+    margin-right: 30px !important;
     display: flex;
     align-items: center;
     justify-content: center;
