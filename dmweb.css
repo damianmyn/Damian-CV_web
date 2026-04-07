@@ -585,7 +585,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to bottom right, #c15f3c, #f08964);
+  background: linear-gradient(to bottom right, #c15f3c, #d41f1f);
   position: relative;
   padding-top: 12rem;
 }
@@ -607,8 +607,13 @@ h2 {
   filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3));
 }
 .section-bg {
-  background: linear-gradient(to bottom right, #4ed9cb, #1bbbab);
+  background: linear-gradient(to bottom right, #2a9d8f);
 }
+
+.section-contact-bg {
+  background: linear-gradient(to right, #2a9d8f 65%, #262624 65% 67%, #f06bcd 67% 93%, #262624 93% 95%, #f3cb68 95%);
+}
+
 .name-strip-container::after {
   content: '';
   position: absolute;
