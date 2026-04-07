@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Damian Mynhardt - CV</title>
     <link rel="icon" href="ico/favicon.ico">
-    <link rel="stylesheet" href="dmweb.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../dmweb.css">
+    <link rel="stylesheet" href="../main.css">
 </head>
 <body>
     <!-- LANDING PAGE -->
@@ -102,7 +102,7 @@
 
                 <a class="contact-item" href="mailto:damian.cv@protonmail.com">
                     <div class="contact-icon-wrap">
-                        <img src="ico/mail.png" alt="Email Icon" class="contact-icon">
+                        <img src="../ico/mail.png" alt="Email Icon" class="contact-icon">
                     </div>
                     <span class="contact-label">
                         <span>damian.cv@protonmail.com</span>
@@ -111,7 +111,7 @@
 
                 <a class="contact-item" href="linkedin.com/in/damian-mynhardt-2a8219230">
                     <div class="contact-icon-wrap">
-                        <img src="ico/linkedin-icon-3.png" alt="linkedin Icon" class="contact-icon">
+                        <img src="../ico/linkedin-icon-3.png" alt="linkedin Icon" class="contact-icon">
                     </div>
                     <span class="contact-label">
                         <span>/in/damian-mynhardt</span>
@@ -120,7 +120,7 @@
 
                 <div class="contact-item">
                     <div class="contact-icon-wrap">
-                        <img src="ico/telephone.png" alt="Phone Icon" class="contact-icon">
+                        <img src="../ico/telephone.png" alt="Phone Icon" class="contact-icon">
                     </div>
                     <span class="contact-label" onclick="copyToClipboard('+27 76 249 4252')" style="cursor: pointer;">
                         +27 76 249 4252
@@ -129,7 +129,7 @@
 
                 <a class="contact-item" href="https://github.com/damianmyn" target="_blank" rel="noopener noreferrer">
                     <div class="contact-icon-wrap">
-                        <img src="ico/github-mark-white.png" alt="GitHub Icon" class="contact-icon">
+                        <img src="../ico/github-mark-white.png" alt="GitHub Icon" class="contact-icon">
                     </div>
                     <span class="contact-label">github.com/damianmyn</span>
                 </a>
@@ -243,7 +243,7 @@
             <p>
                 You can download my resume by clicking the button below:
             </p>
-            <a href="Damian_Mynhardt_Resume.pdf" download="Damian_Mynhardt_Resume.pdf" class="button button-primary mt-4">
+            <a href="../Damian_Mynhardt_Resume.pdf" download="Damian_Mynhardt_Resume.pdf" class="button button-primary mt-4">
             Download Resume
             </a>
         </section>
@@ -359,9 +359,8 @@
         }, { passive: true })
     </script>
 
-    <script src="Art/artImages.js"></script>
-    <script src="Certificate/certificateFiles.js"></script>
-    <script src="particles.js"></script>
+    <script src="../Art/artImages.js"></script>
+    <script src="../Certificate/certificateFiles.js"></script>
     <script>
         let lastScrollY = window.scrollY;
         let isHeaderScrolled = false;
@@ -411,7 +410,7 @@
             
             artImages.forEach((imageName, index) => {
                 const img = document.createElement('img');
-                img.src = `Art/${imageName}`;
+                img.src = `../Art/${imageName}`;
                 img.alt = `Artwork ${index + 1}`;
                 img.loading = 'lazy';
                 img.onclick = () => openModal(img.src, img.alt);
@@ -462,7 +461,7 @@
 
                 let previewHtml = '';
                 const filePath = `Certificate/${fileName}`;
-                const thumbnailPath = isPDF ? `Certificate/thumbnails/${fileName.replace('.pdf', '.jpg')}` : filePath;
+                const thumbnailPath = isPDF ? `../Certificate/thumbnails/${fileName.replace('.pdf', '.jpg')}` : filePath;
 
                 // Create the preview image element
                 previewHtml = `<img src="${thumbnailPath}" alt="${fileName.replace(/\.[^/.]+$/, "")} Preview" class="w-full h-auto object-cover rounded-lg mb-4" onerror="this.src='path/to/placeholder.jpg'; this.alt='Preview not available';" />`;
