@@ -1,11 +1,5 @@
 /*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer properties;
-@font-face {
-  font-family: 'customfontheader';
-  src: url('fonts/Umbara-AReLL.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -607,11 +601,11 @@ h2 {
   filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3));
 }
 .section-bg {
-  background: linear-gradient(to bottom right, #2a9d8f);
+  background: linear-gradient(to bottom right, #5f8ab3);
 }
 
 .section-contact-bg {
-  background: linear-gradient(to right, #2a9d8f 65%, #262624 65% 67%, #f06bcd 67% 93%, #262624 93% 95%, #f3cb68 95%);
+  background: linear-gradient(to right, #5f8ab3 65%, #262624 65% 67%, #f06bcd 67% 93%, #262624 93% 95%, #f3cb68 95%);
 }
 
 .name-strip-container::after {
