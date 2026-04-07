@@ -9,6 +9,41 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
+    <!-- LANDING PAGE -->
+    <div id="landing-page">
+        <div class="landing-noise"></div>
+        <div class="landing-ticker-wrap" aria-hidden="true">
+            <div class="landing-ticker" id="landing-ticker">
+                <span>DAMIAN MYNHARDT</span><span class="ticker-sep">▪</span>
+                <span>I.T. STUDENT</span><span class="ticker-sep">▪</span>
+                <span>GRAPHIC DESIGNER</span><span class="ticker-sep">▪</span>
+                <span>LINUX SYSADMIN</span><span class="ticker-sep">▪</span>
+                <span>CYBERSECURITY</span><span class="ticker-sep">▪</span>
+                <span>DAMIAN MYNHARDT</span><span class="ticker-sep">▪</span>
+                <span>I.T. STUDENT</span><span class="ticker-sep">▪</span>
+                <span>GRAPHIC DESIGNER</span><span class="ticker-sep">▪</span>
+                <span>LINUX SYSADMIN</span><span class="ticker-sep">▪</span>
+                <span>CYBERSECURITY</span><span class="ticker-sep">▪</span>
+            </div>
+        </div>
+
+        <div class="landing-content">
+            <div class="landing-label">2ND YEAR I.T. STUDENT - CTU TRAINING SOLUTIONS</div>
+            <h1 class="landing-name" id="landing-name">DAMIAN<br>MYNHARDT</h1>
+            <div class="landing-sub" id="landing-sub">I.T. STUDENT (2ND YEAR) &amp; GRAPHIC DESIGNER</div>
+            <div class="landing-cta-row">
+                <button class="landing-btn" onclick="enterSite()">ENTER SITE</button>
+                <a href="Damian_Mynhardt_Resume.pdf" download class="landing-btn landing-btn--outline">DOWNLOAD CV</a>
+            </div>
+        </div>
+
+        <div class="landing-marquee-bottom" aria-hidden="true">
+            <div class="landing-marquee-inner" id="landing-marquee-bottom">
+                <span>PYTHON &nbsp;·&nbsp; RUST &nbsp;·&nbsp; GOLANG &nbsp;·&nbsp; DOCKER &nbsp;·&nbsp; LINUX &nbsp;·&nbsp; AWS &nbsp;·&nbsp; MYSQL &nbsp;·&nbsp; NETWORKING &nbsp;·&nbsp; ADOBE &nbsp;·&nbsp; CISCO &nbsp;·&nbsp; GIT &nbsp;·&nbsp; BSD &nbsp;·&nbsp;</span>
+                <span>PYTHON &nbsp;·&nbsp; RUST &nbsp;·&nbsp; GOLANG &nbsp;·&nbsp; DOCKER &nbsp;·&nbsp; LINUX &nbsp;·&nbsp; AWS &nbsp;·&nbsp; MYSQL &nbsp;·&nbsp; NETWORKING &nbsp;·&nbsp; ADOBE &nbsp;·&nbsp; CISCO &nbsp;·&nbsp; GIT &nbsp;·&nbsp; BSD &nbsp;·&nbsp;</span>
+            </div>
+        </div>
+    </div>
     <header class="py-6">
         <div class="container mx-auto px-4 flex items-center justify-between">
             <div class="name-strip-container">
@@ -592,6 +627,72 @@
             navMenu.classList.add('hidden');
         }
     }
+
+// ── Landing page ──────────────────────────────────────────────
+    function enterSite() {
+        const lp = document.getElementById('landing-page')
+        lp.classList.add('landing-exit')
+        setTimeout(() => {
+            lp.style.display = 'none'
+            const scrollSections = document.getElementById('scroll-sections')
+            if (scrollSections) scrollSections.style.display = 'block'
+            document.body.style.paddingTop = ''
+            window.scrollTo({ top: 0, behavior: 'instant' })
+        }, 700)
+    }
+
+        // Pretext: animate landing headline letter-by-letter
+        window.addEventListener('DOMContentLoaded', () => {
+            const nameEl = document.getElementById('landing-name')
+            if (nameEl) {
+                const rawText = nameEl.innerText
+                nameEl.innerHTML = rawText.split('').map(ch =>
+                    ch === '\n' ? '<br>'
+                    : ch === ' ' ? '<span style="display:inline-block;width:0.4em"> </span>'
+                    : `<span class="landing-char" style="display:inline-block;opacity:0;transform:translateY(60px) rotate(8deg)">${ch}</span>`
+                ).join('')
+
+                document.querySelectorAll('.landing-char').forEach((el, i) => {
+                    setTimeout(() => {
+                        el.style.transition = 'transform 0.55s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease'
+                        el.style.opacity = '1'
+                        el.style.transform = 'translateY(0) rotate(0deg)'
+                    }, 120 + i * 45)
+                })
+            }
+
+            // Pretext: measure subtitle and animate it in using line metrics
+            const subEl = document.getElementById('landing-sub')
+            if (subEl && window.pretextUtils) {
+                const font = '700 1rem Space Mono'
+                const maxWidth = subEl.offsetWidth || 500
+                const lines = window.pretextUtils.getTextLines(subEl.textContent, font, maxWidth)
+                const totalHeight = lines.length * 28
+                subEl.style.setProperty('--sub-height', totalHeight + 'px')
+                setTimeout(() => subEl.classList.add('landing-sub--visible'), 900)
+            } else if (subEl) {
+                setTimeout(() => subEl.classList.add('landing-sub--visible'), 900)
+            }
+
+            // Ticker scroll using pretext metrics
+            animateTicker()
+        })
+
+        function animateTicker() {
+            const ticker = document.getElementById('landing-ticker')
+            if (!ticker) return
+            let x = 0
+            const speed = 1.2
+            function step() {
+                x -= speed
+                const halfWidth = ticker.scrollWidth / 2
+                if (Math.abs(x) >= halfWidth) x = 0
+                ticker.style.transform = `translateX(${x}px)`
+                requestAnimationFrame(step)
+            }
+            requestAnimationFrame(step)
+        }
+
     </script>
 </body>
 </html>
