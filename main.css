@@ -861,13 +861,14 @@ section a:hover:not(.contact-item) {
   justify-content: center;
   align-items: flex-start;
   overflow: hidden;
-  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.34,1.56,0.64,1);
+  transition: opacity 5s ease, transform 0.7s cubic-bezier(0.34,1.56,0.64,1);
 }
 
 #landing-page.landing-exit {
   opacity: 0;
-  transform: translateY(-40px);
+  transform: translateX(100%) translateY(100%) rotate(30deg);
   pointer-events: none;
+
 }
 
 /* Subtle grid noise overlay */
