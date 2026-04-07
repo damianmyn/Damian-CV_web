@@ -1036,6 +1036,7 @@ section a:hover:not(.contact-item) {
 
 .landing-btn--outline:hover {
   background: var(--border-black);
+  outline: #f5f5f5 3px dotted !important;
   color: var(--accent-yellow);
 }
 
