@@ -105,11 +105,13 @@
                     </span>
                 </a>
 
-                <div class="contact-item" onclick="this.classList.toggle('active')">
+                <div class="contact-item">
                     <div class="contact-icon-wrap">
                         <img src="ico/telephone.png" alt="Phone Icon" class="contact-icon">
                     </div>
-                    <span class="contact-label">+27 76 249 4252</span>
+                    <span class="contact-label" onclick="copyToClipboard('+27 76 249 4252')" style="cursor: pointer;">
+                        +27 76 249 4252
+                    </span>
                 </div>
 
                 <a class="contact-item" href="https://github.com/damianmyn" target="_blank" rel="noopener noreferrer">
@@ -704,6 +706,13 @@
             }
             requestAnimationFrame(step)
         }
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Phone number copied to clipboard: ' + text);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+}
 
     </script>
 </body>
