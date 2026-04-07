@@ -908,6 +908,8 @@ section a:hover:not(.contact-item) {
   display: inline-flex;
   gap: 2.5rem;
   will-change: transform;
+  width: max-content;
+  animation: marqueeScroll 28s linear infinite;
 }
 
 .landing-ticker span { display: inline-block; }
@@ -1053,13 +1055,14 @@ section a:hover:not(.contact-item) {
 
 .landing-marquee-inner {
   display: inline-flex;
-  animation: marqueeScroll 18s linear infinite;
+  animation: marqueeScroll 28s linear infinite;
   font-family: 'Space Mono', monospace;
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--border-black);
+  width: max-content;
 }
 
 @keyframes marqueeScroll {
