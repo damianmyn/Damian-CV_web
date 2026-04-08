@@ -11,6 +11,7 @@ const artImages = [
   "inthedark.webp",
   "kings.webp",
   "momento.webp",
+  "neobrut-dm-ico.webp",
   "starewaytoheaven.webp",
   "tears in the rain.webp",
   "ubridled.webp",
