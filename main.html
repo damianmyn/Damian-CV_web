@@ -49,12 +49,12 @@
             <section id="contact" class="section-contact-bg p-6 rounded-lg shadow-md mb-6">
                 <h2 class="text-4xl font-semibold mb-4">Contact Me</h2>
                 <div class="contact-list">
-                    <a class="contact-item" href="mailto:damian.cv@protonmail.com">
+                    <a class="contact-item" href="/cdn-cgi/l/email-protection#096d6864606867276a7f49797b667d666764686065276a6664">
                         <div class="contact-icon-wrap">
                             <img src="ico/mail.png" alt="Email Icon" class="contact-icon">
                         </div>
                         <span class="contact-label">
-                            <span><span>damian.cv@protonmail.com</span></span>
+                            <span><span class="__cf_email__" data-cfemail="7b1f1a16121a1555180d3b0b09140f1415161a121755181416">[email&#160;protected]</span></span>
                         </span>
                     </a>
 
@@ -71,9 +71,7 @@
                         <div class="contact-icon-wrap">
                             <img src="ico/telephone.png" alt="Phone Icon" class="contact-icon">
                         </div>
-                        <span class="contact-label" onclick="copyToClipboard('+27 76 249 4252')" style="cursor: pointer;">
-                            +27 76 249 4252
-                        </span>
+                        <span class="contact-label" id="phone-label" onclick="copyToClipboard('+27 76 249 4252')" style="cursor: pointer;">+27 76 249 4252</span>
                     </div>
 
                     <a class="contact-item" href="https://github.com/damianmyn" target="_blank" rel="noopener noreferrer">
@@ -196,16 +194,32 @@
         }
 
         function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Phone number copied to clipboard!');
-            }).catch(() => {
+            const label = document.getElementById('phone-label');
+            if (label.dataset.copying) return; // prevent double-trigger
+            label.dataset.copying = '1';
+
+            const flashCopied = () => {
+                // Swap text and colour — don't touch opacity/transform (CSS hover owns those)
+                label.textContent = '\u2714 COPIED';
+                label.style.backgroundColor = '#82e70f';
+                label.style.color = '#0a0a0a';
+
+                setTimeout(() => {
+                    label.textContent = '+27 76 249 4252';
+                    label.style.backgroundColor = '';
+                    label.style.color = '';
+                    delete label.dataset.copying;
+                }, 1800);
+            };
+
+            navigator.clipboard.writeText(text).then(flashCopied).catch(() => {
                 const el = document.createElement('textarea');
                 el.value = text;
                 document.body.appendChild(el);
                 el.select();
                 document.execCommand('copy');
                 document.body.removeChild(el);
-                alert('Phone number copied to clipboard!');
+                flashCopied();
             });
         }
 
