@@ -1,2 +1,18 @@
 const certificateFiles = [
+  "AWS Certified Cloud Practitioner certificate.pdf",
+  "CompTIA A+ ce certificate.pdf",
+  "CompTIA Network+ ce certificate.pdf",
+  "CompTIA Security+ ce certificate.pdf",
+  "Cyber Security (Short Course) Certificate.pdf",
+  "Data_ScienceZTM.pdf",
+  "Dion acadamy comptia security .pdf",
+  "SOC.pdf",
+  "TABGCSp1.pdf",
+  "TBGTPHS.pdf",
+  "UC-09f44636-e5c7-488e-ac81-9ac620af0779.pdf",
+  "ZTMPython.pdf",
+  "ZTM_ethical_hacking_course.pdf",
+  "golang cert.pdf",
+  "sact.pdf",
+  "z-sec course cert.pdf",
 ];
