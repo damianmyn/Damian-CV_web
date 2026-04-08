@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Damian Mynhardt - Certificates</title>
-    <link rel="icon" href="ico/favicon.ico">
-    <link rel="stylesheet" href="dmweb.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="../ico/favicon.ico">
+    <link rel="stylesheet" href="../dmweb.css">
+    <link rel="stylesheet" href="../main.css">
     <style>
         /* Header animations only play on main.html (the about page) */
         header { animation: none !important; }
@@ -29,10 +29,10 @@
                 </button>
                 
                 <ul id="nav-menu" class="section-bg hidden flex-col fixed top-32 left-0 w-full shadow-lg rounded-lg divide-y divide-white-200 lg:static lg:flex lg:flex-row lg:space-x-6 lg:bg-transparent lg:shadow-none lg:rounded-none lg:divide-y-0 text-white lg:text-white z-30">
-                    <li><a href="main.html#about" class="hover:underline w-full text-left px-4 py-2 block">About</a></li>
-                    <li><a href="portfolio.html" class="hover:underline w-full text-left px-4 py-2 block">Portfolio</a></li>
+                    <li><a href="../main/main.html#about" class="hover:underline w-full text-left px-4 py-2 block">About</a></li>
+                    <li><a href="../portfolio/portfolio.html" class="hover:underline w-full text-left px-4 py-2 block">Portfolio</a></li>
                     <li><a href="certificates.html" class="hover:underline w-full text-left px-4 py-2 block" style="border-bottom: 3px solid var(--accent-orange);">Certificates</a></li>
-                    <li><a href="download.html" class="hover:underline w-full text-left px-4 py-2 block">Download Resume</a></li>
+                    <li><a href="../download/download.html" class="hover:underline w-full text-left px-4 py-2 block">Download Resume</a></li>
                 </ul>
             </nav>
         </div>
@@ -76,7 +76,7 @@
         </div>
     </footer>
 
-    <script src="Certificate/certificateFiles.js"></script>
+    <script src="certificateFiles.js"></script>
     <script src="particles.js"></script>
     <script>
         let isHeaderScrolled = false;
@@ -122,8 +122,8 @@
 
                 const isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(fileExtension);
                 const isPDF = fileExtension === 'pdf';
-                const filePath = `Certificate/${fileName}`;
-                const thumbnailPath = isPDF ? `Certificate/thumbnails/${fileName.replace('.pdf', '.jpg')}` : filePath;
+                const filePath = `${fileName}`;
+                const thumbnailPath = isPDF ? `thumbnails/${fileName.replace('.pdf', '.jpg')}` : filePath;
 
                 certificateCard.innerHTML = `
                     <div class="w-full flex-grow flex items-center justify-center">
