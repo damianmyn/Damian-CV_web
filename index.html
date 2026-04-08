@@ -3,564 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Damian Mynhardt - CV</title>
-    <link rel="icon" href="favicon.ico">
+    <title>Damian Mynhardt</title>
+    <link rel="icon" href="ico/favicon.ico">
     <link rel="stylesheet" href="dmweb.css">
+    <link rel="stylesheet" href="main.css">
 </head>
-<body>
-    <!-- Particles Background Canvas -->
-    <canvas id="particlesCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;"></canvas>
+<body style="padding-top: 0 !important;">
 
-    <header class="py-6">
-        <div class="container mx-auto px-4 flex items-center justify-between">
-            <div class="name-strip-container">
-                <h1 class="text-6xl font-bold" style="color: #f8eed2;">Damian Mynhardt</h1>
-                <p class="text-lg" style="color: #f8eed2;">I.T. Student (2nd Year) & Graphic Designer</p>
+    <div id="landing-page">
+        <div class="landing-noise"></div>
+        <div class="landing-ticker-wrap" aria-hidden="true">
+            <div class="landing-ticker" id="landing-ticker">
+                <span>DAMIAN MYNHARDT</span><span class="ticker-sep">▪</span>
+                <span>I.T. STUDENT</span><span class="ticker-sep">▪</span>
+                <span>GRAPHIC DESIGNER</span><span class="ticker-sep">▪</span>
+                <span>LINUX SYSADMIN</span><span class="ticker-sep">▪</span>
+                <span>CYBERSECURITY</span><span class="ticker-sep">▪</span>
+                <span>DAMIAN MYNHARDT</span><span class="ticker-sep">▪</span>
+                <span>I.T. STUDENT</span><span class="ticker-sep">▪</span>
+                <span>GRAPHIC DESIGNER</span><span class="ticker-sep">▪</span>
+                <span>LINUX SYSADMIN</span><span class="ticker-sep">▪</span>
+                <span>CYBERSECURITY</span><span class="ticker-sep">▪</span>
+                <span>DAMIAN MYNHARDT</span><span class="ticker-sep">▪</span>
+                <span>I.T. STUDENT</span><span class="ticker-sep">▪</span>
+                <span>GRAPHIC DESIGNER</span><span class="ticker-sep">▪</span>
+                <span>LINUX SYSADMIN</span><span class="ticker-sep">▪</span>
+                <span>CYBERSECURITY</span><span class="ticker-sep">▪</span>
+                <span>DAMIAN MYNHARDT</span><span class="ticker-sep">▪</span>
+                <span>I.T. STUDENT</span><span class="ticker-sep">▪</span>
+                <span>GRAPHIC DESIGNER</span><span class="ticker-sep">▪</span>
+                <span>LINUX SYSADMIN</span><span class="ticker-sep">▪</span>
+                <span>CYBERSECURITY</span><span class="ticker-sep">▪</span>
             </div>
-            
-            <nav id="navbar" class="bg-transparent">
-                <button id="menu-toggle" class="lg:hidden block p-2 focus:outline-none" aria-label="Open menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
-                
-                <ul id="nav-menu" class="bg-creamy hidden flex-col fixed top-32 left-0 w-full shadow-lg rounded-lg divide-y divide-white-200 lg:static lg:flex lg:flex-row lg:space-x-6 lg:bg-transparent lg:shadow-none lg:rounded-none lg:divide-y-0 text-white lg:text-white z-30">
-                    <li><a href="#about" class="hover:underline w-full text-left px-4 py-2 block">About</a></li>
-                    <li><button onclick="showSection('portfolio')" class="hover:underline w-full text-left px-4 py-2 block">Portfolio</button></li>
-                    <li><button onclick="showSection('certificates')" class="hover:underline w-full text-left px-4 py-2 block">Certificates</button></li>
-                    <li><button onclick="showSection('download')" class="hover:underline w-full text-left px-4 py-2 block">Download Resume</button></li>
-                </ul>
-            </nav>
         </div>
-    </header>
 
-    <main class="container mx-auto px-4 py-8 main-container">
-        
-        <!-- Scrollable Sections -->
-        <div id="scroll-sections">
-            <section id="about" class="bg-creamy p-6 rounded-lg shadow-md mb-6">
-                <h2 class="text-4xl font-semibold mb-4" style="color: oklch(97.74 0.02 97.52);">About Me</h2>
-                <p style="color: #bcb9b0;">
-                    I am a hard working individual that finds creative solutions to problems and enjoys a challenge. I am interested in programming, cyber security and graphic design, Linux systems administration and systems architecture as it combines both problem solving and creative thinking. I enjoy learning new skills and am always eager to learn. 
-                </p>
-            </section>
-
-            <section id="education" class="bg-creamy p-6 rounded-lg shadow-md mb-6">
-                <h2 class="text-4xl font-semibold mb-4" style="color: oklch(97.74 0.02 97.52);">Education</h2>
-                <div class="mb-4">
-                    <h3 class="text-xl font-medium" style="color: oklch(97.74 0.02 97.52);">High School Bacheolors</h3>
-                    <p style="color: #bcb9b0;">Boksburg High School 2018-2022</p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-medium" style="color: oklch(97.74 0.02 97.52);">Diploma in I.T. Network & Administration</h3>
-                    <p style="color: #bcb9b0;">CTU Training Solutions 2025-Present</p>
-                </div>
-            </section>
-
-            <section id="experience" class="bg-creamy p-6 rounded-lg shadow-md mb-6" style="color: oklch(97.74 0.02 97.52);">
-                <h2 class="text-4xl font-semibold mb-4">Experience</h2>
-                <div class="mb-4">
-                    <h3 class="text-xl font-medium" style="color: oklch(97.74 0.02 97.52);">Store Assistant & Graphic Designer</h3>
-                    <p style="color: #bcb9b0;">3@1, Brakpan, Carnival Mall 2023-2024</p>
-                    <ul class="list-disc pl-5" style="color: #bcb9b0;">
-                        <li>Completing various printing tasks suchs as mug printing, shirt printing, canvas printing and blocking.</li>
-                        <li>Designing artwork for welcome boards, brochures, flyers, posters and various other reasons.</li>
-                        <li>Helping customers with various secretarial services such as writing their CV, invoices, e-mails and letters.</li>
-                        <li>Using Kodak products to print photographs and editing said photographs.</li>
-                        <li>Booking Skynet deliveries.</li>
-                        <li>Troubleshooting Xerox and HP printers.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="skills" class="bg-creamy p-6 rounded-lg shadow-md mb-6">
-                <h2 class="text-4xl font-semibold mb-4" style="color: oklch(97.74 0.02 97.52);">Skills</h2>
-                <ul class="grid grid-cols-2 gap-4" style="color: #bcb9b0;">
-                    <li>Python</li>
-                    <li>Haskell</li>
-                    <li>Rust</li>
-                    <li>Golang</li>
-                    <li>MySQL</li>
-                    <li>OraclSQL</li>
-                    <li>SQLServer</li>
-                    <li>MongoDB</li>
-                    <li>Linux Systems</li>
-                    <li>Docker</li>
-                    <li>Git</li>
-                    <li>AWS</li>
-                    <li>Cybersecurity</li>
-                    <li>Windows Systems</li>
-                    <li>Microsoft 365</li>
-                    <li>BSD Systems</li>
-                    <li>Adobe products</li>
-                    <li>Networking</li>
-                    <li>Cisco products</li>
-                    <li>Quick learner</li>
-                </ul>
-            </section>
-
-            <section id="contact" class="bg-creamy p-6 rounded-lg shadow-md mb-6" style="color: oklch(97.74 0.02 97.52);">
-                <h2 class="text-4xl font-semibold mb-4">Contact Me</h2>
-                <p style="color: #bcb9b0;">
-                    <img src="ico/mail.png" alt="Email Icon" class="contact-icon" style="vertical-align: middle;">
-                    <b style="color: #e2dbce;"></b> <a href="mailto:damian.cv@protonmail.com?">damian.cv@protonmail.com</a>
-                    <br>
-                    <img src="ico/telephone.png" alt="Phone Icon" class="contact-icon" style="vertical-align: middle;">
-                    <b style="color: #e2dbce;"></b> +27 76 249 4252 
-                    <br>
-                    <img src="ico/github-mark-white.png" alt="GitHub Icon" class="contact-icon" style="vertical-align: middle;">
-                    <b style="color: #e2dbce;"></b> <a href="https://github.com/damianmyn" class="hover:underline">github.com/damianmyn</a>
-                </p>
-            </section>
-
+        <div class="landing-content">
+            <div class="landing-label-box"><p class="landing-label"><script src="https://wordsmith.org/words/quote.js"></script></p></div>
+            <h1 class="landing-name" id="landing-name">DAMIAN<br>MYNHARDT</h1>
+            <div class="landing-sub" id="landing-sub">I.T. STUDENT (2ND YEAR) &amp; GRAPHIC DESIGNER</div>
+            <div class="landing-cta-row">
+                <button class="landing-btn" onclick="enterSite()">ENTER SITE</button>
+                <a href="Damian_Mynhardt_Resume.pdf" download class="landing-btn landing-btn--outline">DOWNLOAD CV</a>
+            </div>
         </div>
-        
-        <!-- Clickable Sections -->
-        <section id="portfolio" class="bg-creamy p-6 rounded-lg shadow-md mb-6 section-hidden">
-            <h2 class="text-4xl font-semibold mb-4" style="color: oklch(97.74 0.02 97.52);">My Art Portfolio</h2>
-            <p class="mb-6" style="color: #bcb9b0";>A collection of my digital artwork and creative designs. Click on any image to view it in full size.</p>
-            
-            <div id="portfolio-loading" class="text-center py-8">
-                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
-                <p class="mt-2" style="color: #bcb9b0;">Loading portfolio...</p>
-            </div>
-            
-            <div id="portfolio-gallery" class="masonry" style="display: none;">
-                <!-- Images will be dynamically loaded here -->
-            </div>
-            
-            <div id="portfolio-empty" class="text-center py-8 text-gray-600" style="display: none;">
-                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z" />
-                </svg>
-                <p class="mt-2">No artwork found. Add some images to the Art folder to see them here!</p>
-            </div>
-        </section>
 
-        <section id="certificates" class="bg-creamy p-6 rounded-lg shadow-md mb-6 section-hidden">
-            <h2 class="text-4xl font-semibold mb-4" style="color: oklch(97.74 0.02 97.52);">My Certificates</h2>
-            <p class="mb-6" style="color: #bcb9b0;">Professional certifications and achievements. Click on any certificate to view or download it.</p>
-            
-            <div id="certificates-loading" class="text-center py-8">
-                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
-                <p class="mt-2" style="color: #bcb9b0;">Loading certificates...</p>
+        <div class="landing-marquee-bottom" aria-hidden="true">
+            <div class="landing-marquee-inner" id="landing-marquee-bottom">
+                <span>PYTHON &nbsp;·&nbsp; RUST &nbsp;·&nbsp; GOLANG &nbsp;·&nbsp; DOCKER &nbsp;·&nbsp; LINUX &nbsp;·&nbsp; AWS &nbsp;·&nbsp; MYSQL &nbsp;·&nbsp; NETWORKING &nbsp;·&nbsp; ADOBE &nbsp;·&nbsp; CISCO &nbsp;·&nbsp; GIT &nbsp;·&nbsp; BSD &nbsp;·&nbsp;</span>
+                <span>PYTHON &nbsp;·&nbsp; RUST &nbsp;·&nbsp; GOLANG &nbsp;·&nbsp; DOCKER &nbsp;·&nbsp; LINUX &nbsp;·&nbsp; AWS &nbsp;·&nbsp; MYSQL &nbsp;·&nbsp; NETWORKING &nbsp;·&nbsp; ADOBE &nbsp;·&nbsp; CISCO &nbsp;·&nbsp; GIT &nbsp;·&nbsp; BSD &nbsp;·&nbsp;</span>
+                <span>PYTHON &nbsp;·&nbsp; RUST &nbsp;·&nbsp; GOLANG &nbsp;·&nbsp; DOCKER &nbsp;·&nbsp; LINUX &nbsp;·&nbsp; AWS &nbsp;·&nbsp; MYSQL &nbsp;·&nbsp; NETWORKING &nbsp;·&nbsp; ADOBE &nbsp;·&nbsp; CISCO &nbsp;·&nbsp; GIT &nbsp;·&nbsp; BSD &nbsp;·&nbsp;</span>
+                <span>PYTHON &nbsp;·&nbsp; RUST &nbsp;·&nbsp; GOLANG &nbsp;·&nbsp; DOCKER &nbsp;·&nbsp; LINUX &nbsp;·&nbsp; AWS &nbsp;·&nbsp; MYSQL &nbsp;·&nbsp; NETWORKING &nbsp;·&nbsp; ADOBE &nbsp;·&nbsp; CISCO &nbsp;·&nbsp; GIT &nbsp;·&nbsp; BSD &nbsp;·&nbsp;</span>            
             </div>
-            
-            <div id="certificates-gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" style="display: none;">
-                <!-- Certificates will be dynamically loaded here -->
-            </div>
-            
-            <div id="certificates-empty" class="text-center py-8 text-gray-600" style="display: none;">
-                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                <p class="mt-2">No certificates found. Add your certificates to the Certificates folder to see them here!</p>
-            </div>
-        </section>
-
-        <section id="download" class="bg-creamy p-6 rounded-lg shadow-md mb-6 section-hidden">
-            <h2 class="text-4xl font-semibold mb-4" style="color: oklch(97.74 0.02 97.52);">Resume Download</h2>
-            <p style="color: #bcb9b0;">
-                You can download my resume by clicking the button below:
-            </p>
-            <a href="Damian_Mynhardt_Resume.pdf" download="Damian_Mynhardt_Resume.pdf" class="inline-block mt-4 px-6 py-2 text-white bg-green-600 rounded-full hover:bg-green-700 transition-colors duration-300">
-            Download Resume
-            </a>
-        </section>
-
-    </main>
-
-    <!-- Image Modal -->
-    <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImage" alt="Artwork">
-    </div>
-
-    <!-- Certificate Modal -->
-    <div id="certificateModal" class="modal">
-        <span class="close-cert">&times;</span>
-        <div class="modal-content-cert">
-            <iframe id="modalCertificate" style="width: 90vw; height: 90vh; border: none; border-radius: 8px;"></iframe>
-            <img id="modalCertificateImage" style="max-width: 90vw; max-height: 90vh; border-radius: 8px; display: none;" alt="Certificate">
         </div>
     </div>
 
-    <footer class="bg-blue-500 text-white py-4">
-        <div class="text-center mb-2 md:mb-0">
-            <p>&copy; 2025 Damian Mynhardt. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script type="module">
-        import {
-            measureTextHeight,
-            getTextLines,
-            calculatePortfolioTextMetrics,
-            autoSizeContainer,
-            initializeAutoSizing,
-            initializeMutationObserver
-        } from './pretext-utils.js'
-
-        // Make functions globally accessible for inline event handlers
-        window.pretextUtils = {
-            measureTextHeight,
-            getTextLines,
-            calculatePortfolioTextMetrics,
-            autoSizeContainer,
-            initializeAutoSizing,
-            initializeMutationObserver
-        }
-
-        // Initialize Pretext utilities on page load
-        window.addEventListener('DOMContentLoaded', () => {
-            initializeAutoSizing()
-            initializeMutationObserver()
-            optimizePortfolioSection()
-            optimizeCertificateSection()
-            optimizeTextSections()
-        })
-
-        // Optimize portfolio section descriptions
-        function optimizePortfolioSection() {
-            const descriptions = document.querySelectorAll('#portfolio p')
-            descriptions.forEach(desc => {
-                const font = '14px Arial'
-                const maxWidth = desc.offsetWidth || 300
-                const lineHeight = 20
-                autoSizeContainer(desc, font, maxWidth, lineHeight)
-            })
-        }
-
-        // Optimize certificate section descriptions
-        function optimizeCertificateSection() {
-            const descriptions = document.querySelectorAll('#certificates p')
-            descriptions.forEach(desc => {
-                const font = '14px Arial'
-                const maxWidth = desc.offsetWidth || 300
-                const lineHeight = 20
-                autoSizeContainer(desc, font, maxWidth, lineHeight)
-            })
-        }
-
-        // Optimize all text sections
-        function optimizeTextSections() {
-            const sections = ['about', 'education', 'experience', 'skills', 'contact']
-            
-            sections.forEach(sectionId => {
-                const section = document.getElementById(sectionId)
-                if (!section) return
-
-                const paragraphs = section.querySelectorAll('p')
-                const font = '14px Arial'
-                const lineHeight = 20
-
-                paragraphs.forEach(p => {
-                    const maxWidth = p.offsetWidth || 300
-                    autoSizeContainer(p, font, maxWidth, lineHeight)
-                })
-
-                const listItems = section.querySelectorAll('li')
-                listItems.forEach(li => {
-                    const maxWidth = li.offsetWidth || 300
-                    autoSizeContainer(li, font, maxWidth, lineHeight)
-                })
-            })
-        }
-
-        // Re-optimize on window resize
-        window.addEventListener('resize', () => {
-            optimizePortfolioSection()
-            optimizeCertificateSection()
-            optimizeTextSections()
-        }, { passive: true })
-    </script>
-
-    <script src="Art/artImages.js"></script>
-    <script src="Certificate/certificateFiles.js"></script>
-    <script src="particles.js"></script>
     <script>
-        let lastScrollY = window.scrollY;
-        
-        window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
-            const header = document.querySelector('header');
-            const nav = document.getElementById('navbar');
-
-            if (currentScrollY > lastScrollY && currentScrollY > 20) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-
-            lastScrollY = currentScrollY;
-        });
-
-        function loadPortfolio() {
-            const gallery = document.getElementById('portfolio-gallery');
-            const loading = document.getElementById('portfolio-loading');
-            const empty = document.getElementById('portfolio-empty');
-            
-            if (typeof artImages === 'undefined') {
-                console.error('artImages not loaded');
-                loading.style.display = 'none';
-                empty.style.display = 'block';
-                return;
-            }
-            
-            if (artImages.length === 0) {
-                loading.style.display = 'none';
-                empty.style.display = 'block';
-                return;
-            }
-            
-            gallery.innerHTML = '';
-            
-            artImages.forEach((imageName, index) => {
-                const img = document.createElement('img');
-                img.src = `Art/${imageName}`;
-                img.alt = `Artwork ${index + 1}`;
-                img.loading = 'lazy';
-                img.onclick = () => openModal(img.src, img.alt);
-                img.onerror = function() {
-                    console.warn(`Image not found: ${this.src}`);
-                    this.style.display = 'none';
-                };
-                
-                gallery.appendChild(img);
-            });
-            
-            loading.style.display = 'none';
-            gallery.style.display = 'block';
-            
-            // Optimize portfolio text with Pretext
-            if (window.pretextUtils) {
-                const portfolioText = gallery.parentElement.querySelector('p');
-                if (portfolioText) {
-                    const font = '14px Arial';
-                    const maxWidth = portfolioText.offsetWidth || 300;
-                    const lineHeight = 20;
-                    window.pretextUtils.autoSizeContainer(portfolioText, font, maxWidth, lineHeight);
-                }
-            }
+        function enterSite() {
+            const lp = document.getElementById('landing-page');
+            lp.classList.add('landing-exit');
+            setTimeout(() => {
+                window.location.href = 'main.html';
+            }, 700);
         }
 
-        function loadCertificates() {
-            const gallery = document.getElementById('certificates-gallery');
-            const loading = document.getElementById('certificates-loading');
-            const empty = document.getElementById('certificates-empty');
+        window.addEventListener('DOMContentLoaded', () => {
+            const nameEl = document.getElementById('landing-name');
+            if (nameEl) {
+                const rawText = nameEl.innerText;
+                nameEl.innerHTML = rawText.split('').map(ch =>
+                    ch === '\n' ? '<br>'
+                    : ch === ' ' ? '<span style="display:inline-block;width:0.4em"> </span>'
+                    : `<span class="landing-char" style="display:inline-block;opacity:0;transform:translateY(60px) rotate(8deg)">${ch}</span>`
+                ).join('');
 
-            if (typeof certificateFiles === 'undefined' || certificateFiles.length === 0) {
-                loading.style.display = 'none';
-                empty.style.display = 'block';
-                return;
-            }
-
-            gallery.innerHTML = '';
-
-            certificateFiles.forEach((fileName, index) => {
-                const fileExtension = fileName.split('.').pop().toLowerCase();
-                const certificateCard = document.createElement('div');
-                certificateCard.className = 'bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer flex flex-col items-center text-center';
-                certificateCard.style.backgroundColor = '#1f1f1f';
-
-                const isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(fileExtension);
-                const isPDF = fileExtension === 'pdf';
-
-                let previewHtml = '';
-                const filePath = `Certificate/${fileName}`;
-                const thumbnailPath = isPDF ? `Certificate/thumbnails/${fileName.replace('.pdf', '.jpg')}` : filePath;
-
-                // Create the preview image element
-                previewHtml = `<img src="${thumbnailPath}" alt="${fileName.replace(/\.[^/.]+$/, "")} Preview" class="w-full h-auto object-cover rounded-lg mb-4" onerror="this.src='path/to/placeholder.jpg'; this.alt='Preview not available';" />`;
-
-                certificateCard.innerHTML = `
-                    <div class="w-full flex-grow flex items-center justify-center">
-                        ${previewHtml}
-                    </div>
-                    <div class="text-center mt-2 w-full">
-                        <h3 class="text-sm font-medium mb-1" style="color: oklch(97.74 0.02 97.52);">${fileName.replace(/\.[^/.]+$/, "")}</h3>
-                        <p class="text-xs uppercase tracking-wide" style="color: #bcb9b0;">${fileExtension.toUpperCase()}</p>
-                    </div>
-                `;
-
-                certificateCard.onclick = () => openCertificateModal(filePath, fileName, isImage);
-
-                gallery.appendChild(certificateCard);
-            });
-
-            loading.style.display = 'none';
-            gallery.style.display = 'grid';
-            
-            // Optimize certificate text with Pretext
-            if (window.pretextUtils) {
-                const certificatesText = gallery.parentElement.querySelector('p');
-                if (certificatesText) {
-                    const font = '14px Arial';
-                    const maxWidth = certificatesText.offsetWidth || 300;
-                    const lineHeight = 20;
-                    window.pretextUtils.autoSizeContainer(certificatesText, font, maxWidth, lineHeight);
-                }
-                
-                // Optimize certificate card titles
-                const cardTitles = gallery.querySelectorAll('h3');
-                cardTitles.forEach(title => {
-                    const font = '14px Arial';
-                    const maxWidth = title.offsetWidth || 250;
-                    const lineHeight = 16;
-                    window.pretextUtils.autoSizeContainer(title, font, maxWidth, lineHeight);
+                document.querySelectorAll('.landing-char').forEach((el, i) => {
+                    setTimeout(() => {
+                        el.style.transition = 'transform 0.55s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease';
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0) rotate(0deg)';
+                    }, 120 + i * 45);
                 });
             }
-        }
-        
-        function openModal(src, alt) {
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            modal.classList.add('show');
-            modalImg.src = src;
-            modalImg.alt = alt;
-        }
 
-        function openCertificateModal(src, fileName, isImage) {
-            const modal = document.getElementById('certificateModal');
-            const iframe = document.getElementById('modalCertificate');
-            const img = document.getElementById('modalCertificateImage');
-            
-            modal.classList.add('show');
-            
-            if (isImage) {
-                iframe.style.display = 'none';
-                img.style.display = 'block';
-                img.src = src;
-                img.alt = fileName;
-            } else {
-                img.style.display = 'none';
-                iframe.style.display = 'block';
-                iframe.src = src;
+            const subEl = document.getElementById('landing-sub');
+            if (subEl) {
+                setTimeout(() => subEl.classList.add('landing-sub--visible'), 900);
             }
-        }
-        
-        document.querySelector('.close').onclick = function() {
-            document.getElementById('imageModal').classList.remove('show');
-        };
 
-        document.querySelector('.close-cert').onclick = function() {
-            const modal = document.getElementById('certificateModal');
-            modal.classList.remove('show');
-            // Clear iframe src to stop loading
-            document.getElementById('modalCertificate').src = '';
-        };
-        
-        document.getElementById('imageModal').onclick = function(e) {
-            if (e.target === this) {
-                this.classList.remove('show');
-            }
-        };
-
-        document.getElementById('certificateModal').onclick = function(e) {
-            if (e.target === this) {
-                this.classList.remove('show');
-                document.getElementById('modalCertificate').src = '';
-            }
-        };
-        
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                document.getElementById('imageModal').classList.remove('show');
-                const certModal = document.getElementById('certificateModal');
-                certModal.classList.remove('show');
-                document.getElementById('modalCertificate').src = '';
-            }
+            animateTicker();
         });
 
-        function showSection(sectionId) {
-            const scrollSections = document.getElementById('scroll-sections');
-            const portfolioSection = document.getElementById('portfolio');
-            const certificatesSection = document.getElementById('certificates');
-            const downloadSection = document.getElementById('download');
-
-            scrollSections.style.display = 'none';
-            portfolioSection.classList.add('section-hidden');
-            certificatesSection.classList.add('section-hidden');
-            downloadSection.classList.add('section-hidden');
-            
-            if (sectionId === "portfolio") {
-                portfolioSection.classList.remove('section-hidden');
-                portfolioSection.classList.add('section-animate');
-                loadPortfolio(); 
-            } else if (sectionId === "certificates") {
-                certificatesSection.classList.remove('section-hidden');
-                certificatesSection.classList.add('section-animate');
-                loadCertificates();
-            } else if (sectionId === "download") {
-                downloadSection.classList.remove('section-hidden');
-                downloadSection.classList.add('section-animate');
+        function animateTicker() {
+            const ticker = document.getElementById('landing-ticker');
+            if (!ticker) return;
+            let x = 0;
+            const speed = 1.2;
+            function step() {
+                x -= speed;
+                const halfWidth = ticker.scrollWidth / 2;
+                if (Math.abs(x) >= halfWidth) x = 0;
+                ticker.style.transform = `translateX(${x}px)`;
+                requestAnimationFrame(step);
             }
-            
-            const navMenu = document.getElementById('nav-menu');
-            if (window.innerWidth < 1024 && !navMenu.classList.contains('hidden')) {
-                navMenu.classList.add('hidden');
-            }
+            requestAnimationFrame(step);
         }
-        
-        function scrollToSection(id) {
-            const scrollSections = document.getElementById('scroll-sections');
-            const portfolioSection = document.getElementById('portfolio');
-            const certificatesSection = document.getElementById('certificates');
-            const downloadSection = document.getElementById('download');
-            
-            scrollSections.style.display = 'block';
-            portfolioSection.classList.add('section-hidden');
-            certificatesSection.classList.add('section-hidden');
-            downloadSection.classList.add('section-hidden');
-
-            const targetElement = document.getElementById(id);
-            if (!targetElement) return;
-            targetElement.scrollIntoView({
-                behavior: 'smooth'
-            });
-            const navMenu = document.getElementById('nav-menu');
-            if (window.innerWidth < 1024 && !navMenu.classList.contains('hidden')) {
-                navMenu.classList.add('hidden');
-            }
-        }
-        document.querySelector('a[href="#about"]').addEventListener('click', (e) => {
-            e.preventDefault();
-            scrollToSection('about');
-        });
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            const navMenu = document.getElementById('nav-menu');
-            navMenu.classList.toggle('hidden');
-        });
-
-
-    function scrollToSection(id) {
-        const scrollSections = document.getElementById('scroll-sections');
-        const portfolioSection = document.getElementById('portfolio');
-        const certificatesSection = document.getElementById('certificates');
-        const downloadSection = document.getElementById('download');
-        
-        scrollSections.style.display = 'block';
-        portfolioSection.classList.add('section-hidden');
-        certificatesSection.classList.add('section-hidden');
-        downloadSection.classList.add('section-hidden');
-        
-        const headerHeight = document.querySelector('header').offsetHeight;
-        const targetElement = document.getElementById(id);
-        if (!targetElement) return;
-        
-        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
-        
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
-    
-        const navMenu = document.getElementById('nav-menu');
-        if (window.innerWidth < 1024 && !navMenu.classList.contains('hidden')) {
-            navMenu.classList.add('hidden');
-        }
-    }
     </script>
 </body>
 </html>

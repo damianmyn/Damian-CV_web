@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Damian Mynhardt - CV</title>
+    <link rel="icon" href="ico/favicon.ico">
+    <link rel="stylesheet" href="dmweb.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header class="py-6">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <div class="name-strip-container">
+                <h1 class="text-6xl font-bold">Damian Mynhardt</h1>
+                <p class="text-lg">I.T. Student (2nd Year) & Graphic Designer</p>
+            </div>
+            
+            <nav id="navbar" class="bg-transparent">
+                <button id="menu-toggle" class="lg:hidden block p-2 focus:outline-none" aria-label="Open menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: var(--text-dark); stroke-width: 2.5;">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                
+                <ul id="nav-menu" class="section-bg hidden flex-col fixed top-32 left-0 w-full shadow-lg rounded-lg divide-y divide-white-200 lg:static lg:flex lg:flex-row lg:space-x-6 lg:bg-transparent lg:shadow-none lg:rounded-none lg:divide-y-0 text-white lg:text-white z-30">
+                    <li><a href="#about" class="hover:underline w-full text-left px-4 py-2 block">About</a></li>
+                    <li><a href="portfolio.html" class="hover:underline w-full text-left px-4 py-2 block">Portfolio</a></li>
+                    <li><a href="certificates.html" class="hover:underline w-full text-left px-4 py-2 block">Certificates</a></li>
+                    <li><a href="download.html" class="hover:underline w-full text-left px-4 py-2 block">Download Resume</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 main-container">
+        <div class="container2">
+            <section id="about" class="section-bg p-6 rounded-lg shadow-md mb-6">
+                <h2 class="text-4xl font-semibold mb-4">About Me</h2>
+                <p>
+                    I am a hard working individual that finds creative solutions to problems and enjoys a challenge. 
+                    I am interested in programming, cyber security, graphic design, Linux systems administration and systems architecture 
+                    as it combines both problem solving and creative thinking. I enjoy learning new skills and always eager to.
+                    Newly found passion for networking and cloud computing. I am currently studying towards a diploma in I.T. Network & Administration at CTU Training Solutions.
+                    I have learnt many useful skills during my time at 3@1 which further developed my abilities to adapt to situations.
+                </p>
+            </section>
+
+            <section id="contact" class="section-contact-bg p-6 rounded-lg shadow-md mb-6">
+                <h2 class="text-4xl font-semibold mb-4">Contact Me</h2>
+                <div class="contact-list">
+                    <a class="contact-item" href="/cdn-cgi/l/email-protection#096d6864606867276a7f49797b667d666764686065276a6664">
+                        <div class="contact-icon-wrap">
+                            <img src="ico/mail.png" alt="Email Icon" class="contact-icon">
+                        </div>
+                        <span class="contact-label">
+                            <span><span class="__cf_email__" data-cfemail="7b1f1a16121a1555180d3b0b09140f1415161a121755181416">[email&#160;protected]</span></span>
+                        </span>
+                    </a>
+
+                    <a class="contact-item" href="linkedin.com/in/damian-mynhardt-2a8219230">
+                        <div class="contact-icon-wrap">
+                            <img src="ico/linkedin-icon-3.png" alt="linkedin Icon" class="contact-icon">
+                        </div>
+                        <span class="contact-label">
+                            <span>/in/damian-mynhardt</span>
+                        </span>
+                    </a>
+
+                    <div class="contact-item">
+                        <div class="contact-icon-wrap">
+                            <img src="ico/telephone.png" alt="Phone Icon" class="contact-icon">
+                        </div>
+                        <span class="contact-label" id="phone-label" onclick="copyToClipboard('+27 76 249 4252')" style="cursor: pointer;">+27 76 249 4252</span>
+                    </div>
+
+                    <a class="contact-item" href="https://github.com/damianmyn" target="_blank" rel="noopener noreferrer">
+                        <div class="contact-icon-wrap">
+                            <img src="ico/github-mark-white.png" alt="GitHub Icon" class="contact-icon">
+                        </div>
+                        <span class="contact-label">github.com/damianmyn</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <section id="education" class="section-bg p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-4xl font-semibold mb-4">Education</h2>
+            <div class="mb-4">
+                <h3 class="text-xl font-medium">High School Bachelors</h3>
+                <p>Boksburg High School 2018-2022</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-medium">Diploma in I.T. Network & Administration</h3>
+                <p>CTU Training Solutions 2025-Present</p>
+            </div>
+        </section>
+
+        <section id="experience" class="section-bg p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-4xl font-semibold mb-4">Experience</h2>
+            <div class="mb-4">
+                <h3 class="text-xl font-medium">Store Assistant & Graphic Designer</h3>
+                <p>3@1, Brakpan, Carnival Mall 2023-2024</p>
+                <ul class="list-disc pl-5">
+                    <li>Completing various printing tasks such as mug printing, shirt printing, canvas printing and blocking.</li>
+                    <li>Designing artwork for welcome boards, brochures, flyers, posters and various other reasons.</li>
+                    <li>Helping customers with various secretarial services such as writing their CV, invoices, e-mails and letters.</li>
+                    <li>Using Kodak products to print photographs and editing said photographs.</li>
+                    <li>Booking Skynet deliveries.</li>
+                    <li>Troubleshooting Xerox and HP printers.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills" class="section-bg p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-4xl font-semibold mb-4">Skills</h2>
+            <ul class="grid grid-cols-2 gap-4">
+                <li>Python</li>
+                <li>Haskell</li>
+                <li>Rust</li>
+                <li>Golang</li>
+                <li>MySQL</li>
+                <li>OracleSQL</li>
+                <li>SQLServer</li>
+                <li>MongoDB</li>
+                <li>Linux Systems</li>
+                <li>Docker</li>
+                <li>Git</li>
+                <li>AWS</li>
+                <li>Cybersecurity</li>
+                <li>Windows Systems</li>
+                <li>Microsoft 365</li>
+                <li>BSD Systems</li>
+                <li>Adobe products</li>
+                <li>Networking</li>
+                <li>Cisco products</li>
+                <li>Quick learner</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="bg-blue-500 text-white py-4">
+        <div class="text-center mb-2 md:mb-0">
+            <p>&copy; <script>document.write(new Date().getFullYear());</script> Damian Mynhardt. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="particles.js"></script>
+    <script>
+        let lastScrollY = window.scrollY;
+        let isHeaderScrolled = false;
+        
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            const header = document.querySelector('header');
+            const body = document.body;
+
+            if (currentScrollY > 50) {
+                if (!isHeaderScrolled) {
+                    header.classList.add('header-scrolled');
+                    body.classList.add('header-scrolled');
+                    isHeaderScrolled = true;
+                }
+            } else {
+                if (isHeaderScrolled) {
+                    header.classList.remove('header-scrolled');
+                    body.classList.remove('header-scrolled');
+                    isHeaderScrolled = false;
+                }
+            }
+            lastScrollY = currentScrollY;
+        }, { passive: true });
+
+        document.querySelector('a[href="#about"]').addEventListener('click', (e) => {
+            e.preventDefault();
+            const headerHeight = document.querySelector('header').offsetHeight;
+            const target = document.getElementById('about');
+            if (!target) return;
+            const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            closeMenu();
+        });
+
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('hidden');
+        });
+
+        function closeMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            if (window.innerWidth < 1024 && !navMenu.classList.contains('hidden')) {
+                navMenu.classList.add('hidden');
+            }
+        }
+
+        function copyToClipboard(text) {
+            const label = document.getElementById('phone-label');
+            if (label.dataset.copying) return; // prevent double-trigger
+            label.dataset.copying = '1';
+
+            const flashCopied = () => {
+                // Swap text and colour — don't touch opacity/transform (CSS hover owns those)
+                label.textContent = '\u2714 COPIED';
+                label.style.backgroundColor = '#82e70f';
+                label.style.color = '#0a0a0a';
+
+                setTimeout(() => {
+                    label.textContent = '+27 76 249 4252';
+                    label.style.backgroundColor = '';
+                    label.style.color = '';
+                    delete label.dataset.copying;
+                }, 1800);
+            };
+
+            navigator.clipboard.writeText(text).then(flashCopied).catch(() => {
+                const el = document.createElement('textarea');
+                el.value = text;
+                document.body.appendChild(el);
+                el.select();
+                document.execCommand('copy');
+                document.body.removeChild(el);
+                flashCopied();
+            });
+        }
+
+        // Animate sections on load
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('main section').forEach((section, index) => {
+                setTimeout(() => section.classList.add('visible'), index * 110);
+            });
+        });
+    </script>
+</body>
+</html>

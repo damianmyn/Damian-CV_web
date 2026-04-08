@@ -1,11 +1,5 @@
 /*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
 @layer properties;
-@font-face {
-  font-family: 'customfontheader';
-  src: url('fonts/Umbara-AReLL.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -585,7 +579,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to bottom right, #c15f3c, #f08964);
+  background: linear-gradient(to bottom right, #c15f3c, #d41f1f);
   position: relative;
   padding-top: 12rem;
 }
@@ -606,9 +600,14 @@ h2 {
   overflow: hidden;
   filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3));
 }
-.bg-creamy {
-  background-color: #262624;
+.section-bg {
+  background: linear-gradient(to bottom right, #5f8ab3);
 }
+
+.section-contact-bg {
+  background: linear-gradient(to right, #5f8ab3 65%, #262624 65% 67%, #f06bcd 67% 93%, #262624 93% 95%, #f3cb68 95%);
+}
+
 .name-strip-container::after {
   content: '';
   position: absolute;
@@ -638,7 +637,7 @@ footer {
   display: block;
 }
 .section-animate {
-  animation: fadeIn 0.5s ease-in-out forwards;
+  animation: fadeIn 0.4s ease-in-out forwards;
 }
 @keyframes fadeIn {
   from {
@@ -711,83 +710,6 @@ footer {
 }
 .close:hover {
   color: #ccc;
-}
-.bg-bubbles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-.bg-bubbles li {
-  position: absolute;
-  list-style: none;
-  display: block;
-  width: 40px;
-  height: 40px;
-  background-color: rgba(255, 255, 255, 0.15);
-  bottom: -160px;
-  animation: square 25s infinite;
-  transition-timing-function: linear;
-}
-.bg-bubbles li:nth-child(1) {
-  left: 10%;
-}
-.bg-bubbles li:nth-child(2) {
-  left: 20%;
-  width: 80px;
-  height: 80px;
-  animation-delay: 2s;
-  animation-duration: 17s;
-}
-.bg-bubbles li:nth-child(3) {
-  left: 25%;
-  animation-delay: 4s;
-}
-.bg-bubbles li:nth-child(4) {
-  left: 40%;
-  width: 60px;
-  height: 60px;
-  animation-duration: 22s;
-  background-color: rgba(255, 255, 255, 0.25);
-}
-.bg-bubbles li:nth-child(5) {
-  left: 70%;
-}
-.bg-bubbles li:nth-child(6) {
-  left: 80%;
-  width: 120px;
-  height: 120px;
-  animation-delay: 3s;
-  background-color: rgba(255, 255, 255, 0.2);
-}
-.bg-bubbles li:nth-child(7) {
-  left: 32%;
-  width: 160px;
-  height: 160px;
-  animation-delay: 7s;
-}
-.bg-bubbles li:nth-child(8) {
-  left: 55%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 15s;
-  animation-duration: 40s;
-}
-.bg-bubbles li:nth-child(9) {
-  left: 25%;
-  width: 10px;
-  height: 10px;
-  background-color: rgba(255, 255, 255, 0.3);
-  animation-delay: 2s;
-  animation-duration: 35s;
-}
-.bg-bubbles li:nth-child(10) {
-  left: 90%;
-  width: 160px;
-  height: 160px;
-  animation-delay: 11s;
 }
 @keyframes square {
   0% {

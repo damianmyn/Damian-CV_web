@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Damian Mynhardt - Download Resume</title>
+    <link rel="icon" href="ico/favicon.ico">
+    <link rel="stylesheet" href="dmweb.css">
+    <link rel="stylesheet" href="main.css">
+    <style>
+        /* Header animations only play on main.html (the about page) */
+        header { animation: none !important; }
+        .name-strip-container { animation: none !important; }
+    </style>
+</head>
+<body>
+    <header class="py-6">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <div class="name-strip-container">
+                <h1 class="text-6xl font-bold">Damian Mynhardt</h1>
+                <p class="text-lg">I.T. Student (2nd Year) & Graphic Designer</p>
+            </div>
+            
+            <nav id="navbar" class="bg-transparent">
+                <button id="menu-toggle" class="lg:hidden block p-2 focus:outline-none" aria-label="Open menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: var(--text-dark); stroke-width: 2.5;">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                
+                <ul id="nav-menu" class="section-bg hidden flex-col fixed top-32 left-0 w-full shadow-lg rounded-lg divide-y divide-white-200 lg:static lg:flex lg:flex-row lg:space-x-6 lg:bg-transparent lg:shadow-none lg:rounded-none lg:divide-y-0 text-white lg:text-white z-30">
+                    <li><a href="main.html#about" class="hover:underline w-full text-left px-4 py-2 block">About</a></li>
+                    <li><a href="portfolio.html" class="hover:underline w-full text-left px-4 py-2 block">Portfolio</a></li>
+                    <li><a href="certificates.html" class="hover:underline w-full text-left px-4 py-2 block">Certificates</a></li>
+                    <li><a href="download.html" class="hover:underline w-full text-left px-4 py-2 block" style="border-bottom: 3px solid var(--accent-orange);">Download Resume</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 main-container">
+        <section id="download" class="section-bg p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-4xl font-semibold mb-4">Resume Download</h2>
+            <p>
+                You can download my resume by clicking the button below:
+            </p>
+            <a href="Damian_Mynhardt_Resume.pdf" download="Damian_Mynhardt_Resume.pdf" class="button button-primary mt-4">
+                Download Resume
+            </a>
+        </section>
+    </main>
+
+    <footer class="bg-blue-500 text-white py-4">
+        <div class="text-center mb-2 md:mb-0">
+            <p>&copy; <script>document.write(new Date().getFullYear());</script> Damian Mynhardt. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="particles.js"></script>
+    <script>
+        let isHeaderScrolled = false;
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            const header = document.querySelector('header');
+            if (currentScrollY > 50) {
+                if (!isHeaderScrolled) {
+                    header.classList.add('header-scrolled');
+                    document.body.classList.add('header-scrolled');
+                    isHeaderScrolled = true;
+                }
+            } else {
+                if (isHeaderScrolled) {
+                    header.classList.remove('header-scrolled');
+                    document.body.classList.remove('header-scrolled');
+                    isHeaderScrolled = false;
+                }
+            }
+        }, { passive: true });
+
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('nav-menu').classList.toggle('hidden');
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('main section').forEach((section, index) => {
+                setTimeout(() => section.classList.add('visible'), index * 110);
+            });
+        });
+    </script>
+</body>
+</html>
