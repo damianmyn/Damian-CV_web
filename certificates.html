@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Damian Mynhardt - Certificates</title>
+    <link rel="icon" href="ico/favicon.ico">
+    <link rel="stylesheet" href="dmweb.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header class="py-6">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <div class="name-strip-container">
+                <h1 class="text-6xl font-bold">Damian Mynhardt</h1>
+                <p class="text-lg">I.T. Student (2nd Year) & Graphic Designer</p>
+            </div>
+            
+            <nav id="navbar" class="bg-transparent">
+                <button id="menu-toggle" class="lg:hidden block p-2 focus:outline-none" aria-label="Open menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: var(--text-dark); stroke-width: 2.5;">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                
+                <ul id="nav-menu" class="section-bg hidden flex-col fixed top-32 left-0 w-full shadow-lg rounded-lg divide-y divide-white-200 lg:static lg:flex lg:flex-row lg:space-x-6 lg:bg-transparent lg:shadow-none lg:rounded-none lg:divide-y-0 text-white lg:text-white z-30">
+                    <li><a href="main.html#about" class="hover:underline w-full text-left px-4 py-2 block">About</a></li>
+                    <li><a href="portfolio.html" class="hover:underline w-full text-left px-4 py-2 block">Portfolio</a></li>
+                    <li><a href="certificates.html" class="hover:underline w-full text-left px-4 py-2 block" style="border-bottom: 3px solid var(--accent-orange);">Certificates</a></li>
+                    <li><a href="download.html" class="hover:underline w-full text-left px-4 py-2 block">Download Resume</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 main-container">
+        <section id="certificates" class="section-bg p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-4xl font-semibold mb-4">My Certificates</h2>
+            <p class="mb-6">Professional certifications and achievements. Click on any certificate to view or download it.</p>
+            
+            <div id="certificates-loading" class="text-center py-8">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2" style="border-color: var(--border-black);"></div>
+                <p class="mt-2">Loading certificates...</p>
+            </div>
+            
+            <div id="certificates-gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" style="display: none;">
+                <!-- Certificates loaded via certificateFiles.js -->
+            </div>
+            
+            <div id="certificates-empty" class="text-center py-8" style="display: none;">
+                <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: var(--text-muted);">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <p class="mt-2">No certificates found. Add your certificates to the Certificates folder to see them here!</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Certificate Modal -->
+    <div id="certificateModal" class="modal">
+        <span class="close-cert">&times;</span>
+        <div class="modal-content-cert">
+            <iframe id="modalCertificate" style="width: 90vw; height: 90vh; border: none; border-radius: 8px;"></iframe>
+            <img id="modalCertificateImage" style="max-width: 90vw; max-height: 90vh; border-radius: 8px; display: none;" alt="Certificate">
+        </div>
+    </div>
+
+    <footer class="bg-blue-500 text-white py-4">
+        <div class="text-center mb-2 md:mb-0">
+            <p>&copy; <script>document.write(new Date().getFullYear());</script> Damian Mynhardt. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="Certificate/certificateFiles.js"></script>
+    <script src="particles.js"></script>
+    <script>
+        let isHeaderScrolled = false;
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            const header = document.querySelector('header');
+            if (currentScrollY > 50) {
+                if (!isHeaderScrolled) {
+                    header.classList.add('header-scrolled');
+                    document.body.classList.add('header-scrolled');
+                    isHeaderScrolled = true;
+                }
+            } else {
+                if (isHeaderScrolled) {
+                    header.classList.remove('header-scrolled');
+                    document.body.classList.remove('header-scrolled');
+                    isHeaderScrolled = false;
+                }
+            }
+        }, { passive: true });
+
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('nav-menu').classList.toggle('hidden');
+        });
+
+        function loadCertificates() {
+            const gallery = document.getElementById('certificates-gallery');
+            const loading = document.getElementById('certificates-loading');
+            const empty = document.getElementById('certificates-empty');
+
+            if (typeof certificateFiles === 'undefined' || certificateFiles.length === 0) {
+                loading.style.display = 'none';
+                empty.style.display = 'block';
+                return;
+            }
+
+            gallery.innerHTML = '';
+            certificateFiles.forEach((fileName, index) => {
+                const fileExtension = fileName.split('.').pop().toLowerCase();
+                const certificateCard = document.createElement('div');
+                certificateCard.className = 'bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer flex flex-col items-center text-center';
+                certificateCard.style.backgroundColor = 'oklch(17.74 0.02 97.52)';
+
+                const isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(fileExtension);
+                const isPDF = fileExtension === 'pdf';
+                const filePath = `Certificate/${fileName}`;
+                const thumbnailPath = isPDF ? `Certificate/thumbnails/${fileName.replace('.pdf', '.jpg')}` : filePath;
+
+                certificateCard.innerHTML = `
+                    <div class="w-full flex-grow flex items-center justify-center">
+                        <img src="${thumbnailPath}" alt="${fileName.replace(/\.[^/.]+$/, "")} Preview" class="w-full h-auto object-cover rounded-lg mb-4" onerror="this.src='path/to/placeholder.jpg'; this.alt='Preview not available';" />
+                    </div>
+                    <div class="text-center mt-2 w-full">
+                        <h3 class="text-sm font-medium mb-1" style="color: oklch(97.74 0.02 97.52);">${fileName.replace(/\.[^/.]+$/, "")}</h3>
+                        <p class="text-xs uppercase tracking-wide" style="color: #bcb9b0;">${fileExtension.toUpperCase()}</p>
+                    </div>
+                `;
+
+                certificateCard.onclick = () => openCertificateModal(filePath, fileName, isImage);
+                gallery.appendChild(certificateCard);
+            });
+
+            loading.style.display = 'none';
+            gallery.style.display = 'grid';
+        }
+
+        function openCertificateModal(src, fileName, isImage) {
+            const modal = document.getElementById('certificateModal');
+            const iframe = document.getElementById('modalCertificate');
+            const img = document.getElementById('modalCertificateImage');
+            modal.classList.add('show');
+            if (isImage) {
+                iframe.style.display = 'none';
+                img.style.display = 'block';
+                img.src = src;
+                img.alt = fileName;
+            } else {
+                img.style.display = 'none';
+                iframe.style.display = 'block';
+                iframe.src = src;
+            }
+        }
+
+        document.querySelector('.close-cert').onclick = function() {
+            document.getElementById('certificateModal').classList.remove('show');
+            document.getElementById('modalCertificate').src = '';
+        };
+
+        document.getElementById('certificateModal').onclick = function(e) {
+            if (e.target === this) {
+                this.classList.remove('show');
+                document.getElementById('modalCertificate').src = '';
+            }
+        };
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('certificateModal').classList.remove('show');
+                document.getElementById('modalCertificate').src = '';
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadCertificates();
+            document.querySelectorAll('main section').forEach((section, index) => {
+                setTimeout(() => section.classList.add('visible'), index * 110);
+            });
+        });
+    </script>
+</body>
+</html>
