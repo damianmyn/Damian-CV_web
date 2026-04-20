@@ -905,6 +905,7 @@ section a:hover:not(.contact-item) {
   align-items: flex-start;
   overflow: hidden;
   transition: opacity 5s ease, transform 1.5s cubic-bezier(0.34,1.56,0.64,1);
+  min-height: 100dvh;
 }
 
 #landing-page.landing-exit {
