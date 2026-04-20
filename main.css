@@ -1100,7 +1100,7 @@ section a:hover:not(.contact-item) {
 
 .landing-marquee-inner {
   display: inline-flex;
-  animation: marqueeScroll 28s linear infinite;
+  animation: marqueeScroll 50s linear infinite;
   font-family: 'Space Mono', monospace;
   font-size: 0.8rem;
   font-weight: 700;
