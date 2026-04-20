@@ -1096,6 +1096,8 @@ section a:hover:not(.contact-item) {
   white-space: nowrap;
 }
 
+
+
 .landing-marquee-inner {
   display: inline-flex;
   animation: marqueeScroll 28s linear infinite;
@@ -1107,6 +1109,7 @@ section a:hover:not(.contact-item) {
   color: var(--border-black);
   width: max-content;
 }
+
 
 @keyframes marqueeScroll {
   from { transform: translateX(0); }
@@ -1121,9 +1124,4 @@ section a:hover:not(.contact-item) {
   .landing-content {
     padding: 3rem 1.5rem 2rem;
   }
-}
-
-#landing-page ~ * {
-  /* Ensure content under landing is not affected by landing transitions */
-  will-change: auto;
 }
