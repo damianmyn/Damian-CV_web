@@ -40,6 +40,38 @@ body.header-scrolled {
   padding-top: 65px;
 }
 
+@media (max-width: 1024px) {
+  body {
+    padding-top: 65px;
+  }
+
+  header {
+    padding: 0.25rem 0 !important;
+    border-bottom-width: 3px !important;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05) !important;
+  }
+
+  header .container {
+    padding: 0.25rem 0 !important;
+  }
+
+  .name-strip-container {
+    padding: 0.3rem 1.2rem !important;
+    min-width: auto !important;
+    margin-left: -100vw !important;
+    padding-left: calc(100vw + 1rem) !important;
+  }
+
+  .name-strip-container h1 {
+    font-size: 1rem !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+  }
+
+  .name-strip-container p {
+    display: none !important;
+  }
+}
 /* Grid background pattern */
 /*
 body::before {
@@ -762,6 +794,12 @@ section a:hover:not(.contact-item) {
   display: grid !important;
   grid-template-columns: 2fr 1fr !important;
   gap: 20px !important;
+}
+
+@media (max-width: 768px) {
+  .container2 {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 /* Contact Section - Vertical slide-out layout */
