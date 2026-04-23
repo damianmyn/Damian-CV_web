@@ -8,4 +8,4 @@ A personal CV and portfolio website built with vanilla HTML, CSS, and JavaScript
   <img width="12" />
 </div>
 
-Live site: [www.damianmynhardt.com](https://www.damianmyn.online/)
+Live site: [www.damianmyn.com](https://www.damianmyn.online/)
