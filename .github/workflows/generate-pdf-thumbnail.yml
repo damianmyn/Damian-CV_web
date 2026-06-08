@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'certificates/**'
+    branches: [master]
 
   workflow_dispatch: {}
 

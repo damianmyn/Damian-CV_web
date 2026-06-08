@@ -2,7 +2,7 @@ name: Generate Certificate File List
 
 on:
   push:
-    branches: [master] # or your default branch
+    branches: [master]
 
 permissions:
   contents: write
