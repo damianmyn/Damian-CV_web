@@ -1,0 +1,61 @@
+name: Generate PDF Thumbnails
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'certificates/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Debug certificates directory
+        run: |
+          ls -la certificates || echo "certificates directory missing"
+          find certificates -maxdepth 1 -type f -iname "*.pdf" -print || echo "No PDF files found"
+
+      - name: Ensure thumbnails directory exists
+        run: |
+          mkdir -p certificates/thumbnails
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils imagemagick
+
+      - name: Generate thumbnails for PDFs
+        run: |
+          set -e
+          shopt -s nullglob || true
+          for file in certificates/*.pdf; do
+            [ -f "$file" ] || continue
+            fname=$(basename "$file")
+            base="${fname%.*}"
+            out="certificates/thumbnails/${base}.jpg"
+            echo "Processing: $file -> $out"
+            # Use pdftoppm to create a single JPEG of page 1. Output path is given without extension.
+            pdftoppm -jpeg -f 1 -singlefile -scale-to-x 1200 -scale-to-y 0 "$file" "certificates/thumbnails/${base}"
+            # If pdftoppm did not produce the file (unexpected), try ImageMagick fallback
+            if [ ! -f "$out" ]; then
+              echo "pdftoppm failed to create $out — trying ImageMagick fallback"
+              convert -density 150 "$file[0]" -quality 85 "$out"
+            fi
+          done
+
+      - name: Commit and push thumbnails
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add certificates/thumbnails/*.jpg || true
+          git diff --cached --quiet || git commit -m "Add/update certificate thumbnails [auto]"
+          git push
