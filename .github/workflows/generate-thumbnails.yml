@@ -33,7 +33,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y poppler-utils imagemagick
 
-      - name: Generate thumbnails for PDFs
+      - name: Generate thumbnails for PDFs (match PDF pixel dimensions)
         run: |
           set -e
           shopt -s nullglob || true
@@ -43,12 +43,13 @@ jobs:
             base="${fname%.*}"
             out="certificates/thumbnails/${base}.jpg"
             echo "Processing: $file -> $out"
-            # Use pdftoppm to create a single JPEG of page 1. Output path is given without extension.
-            pdftoppm -jpeg -f 1 -singlefile -scale-to-x 1200 -scale-to-y 0 "$file" "certificates/thumbnails/${base}"
+            # Render at 72 DPI so 1 point == 1 pixel (PDF points are 1/72 inch).
+            # This makes the output JPG pixel dimensions match the PDF page dimensions.
+            pdftoppm -jpeg -r 72 -f 1 -singlefile "$file" "certificates/thumbnails/${base}"
             # If pdftoppm did not produce the file (unexpected), try ImageMagick fallback
             if [ ! -f "$out" ]; then
               echo "pdftoppm failed to create $out — trying ImageMagick fallback"
-              convert -density 150 "$file[0]" -quality 85 "$out"
+              convert -density 72 "$file[0]" -quality 85 "$out"
             fi
           done
 
