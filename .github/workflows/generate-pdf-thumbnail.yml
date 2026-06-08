@@ -66,6 +66,7 @@ jobs:
           git add certificates/thumbnails || true
           if ! git diff --staged --quiet; then
             git commit -m "chore: generate certificate thumbnails [skip ci]"
+            git pull --rebase origin master
             git push
           else
             echo "No thumbnail changes to commit"
