@@ -1,5 +1,6 @@
 const certificateFiles = [
   "AWS Certified Cloud Practitioner certificate.pdf",
+  "Achievements - damianmynhardt-8393 _ Microsoft Learn.pdf",
   "CompTIA A+ ce certificate.pdf",
   "CompTIA Network+ ce certificate.pdf",
   "CompTIA Security+ ce certificate.pdf",
