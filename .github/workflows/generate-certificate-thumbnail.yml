@@ -1,0 +1,62 @@
+name: Generate certificate thumbnails
+
+on:
+  push:
+    paths:
+      - 'certificates/**/*.pdf'
+
+permissions:
+  contents: write
+
+jobs:
+  thumbnails:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+
+      - name: Generate thumbnails for changed PDFs
+        env:
+          GITHUB_REF_NAME: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          mkdir -p certificates/thumbnails
+
+          # Get list of changed files in this push
+          changed=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" || true)
+          echo "Changed files:\n$changed"
+
+          processed=0
+          for f in $changed; do
+            if [[ "$f" == certificates/*.pdf ]]; then
+              echo "Processing $f"
+              name=$(basename "$f" .pdf)
+              # Create a JPEG of the first page
+              pdftoppm -jpeg -f 1 -singlefile "$f" "certificates/thumbnails/$name"
+              processed=$((processed+1))
+            fi
+          done
+
+          if [[ $processed -eq 0 ]]; then
+            echo "No new certificate PDFs to process."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add certificates/thumbnails/*.jpg || true
+
+          if git diff --staged --quiet; then
+            echo "No thumbnail changes to commit"
+          else
+            git commit -m "Add certificate thumbnails [skip ci]"
+            git push origin "refs/heads/${GITHUB_REF_NAME}"
+          fi
